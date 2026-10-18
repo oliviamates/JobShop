@@ -103,28 +103,16 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcH-9W-LPr">
-                                <rect key="frame" x="89" y="685" width="76.666666666666686" height="35"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <color key="tintColor" systemColor="systemGray3Color"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kX-tW-E2M">
+                                <rect key="frame" x="43" y="564.33333333333337" width="158" height="35"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
-                                    <color key="baseForegroundColor" systemColor="labelColor"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
-                                        <integer key="value" value="1"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
-                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
+                                <buttonConfiguration key="configuration" style="plain" title="Update password"/>
+                                <connections>
+                                    <segue destination="RPp-Bs-sHa" kind="presentation" identifier="ProfileToPassword" modalPresentationStyle="fullScreen" id="esC-Tx-gTc"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-P8-Xik">
-                                <rect key="frame" x="227.33333333333334" y="685" width="76.666666666666657" height="35"/>
+                                <rect key="frame" x="227.33333333333334" y="689" width="76.666666666666657" height="35"/>
                                 <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
@@ -159,13 +147,25 @@
                                     <!--2005-10-18 02:51:23 +0000-->
                                 </date>
                             </datePicker>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3kX-tW-E2M">
-                                <rect key="frame" x="43" y="564.33333333333337" width="158" height="35"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcH-9W-LPr">
+                                <rect key="frame" x="89" y="689" width="76.666666666666686" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGray3Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Update password"/>
-                                <connections>
-                                    <segue destination="RPp-Bs-sHa" kind="presentation" identifier="ProfileToPassword" modalPresentationStyle="fullScreen" id="esC-Tx-gTc"/>
-                                </connections>
+                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qSF-y2-GaV"/>
@@ -180,7 +180,7 @@
                             <constraint firstItem="Kgm-J9-eM4" firstAttribute="leading" secondItem="qSF-y2-GaV" secondAttribute="leading" constant="43" id="O3f-H1-C4f"/>
                             <constraint firstItem="Y0P-VD-fog" firstAttribute="top" secondItem="ZFC-cJ-LEM" secondAttribute="bottom" constant="5" id="PLA-Qt-ibN"/>
                             <constraint firstItem="5TT-KX-B6b" firstAttribute="top" secondItem="Y0P-VD-fog" secondAttribute="bottom" constant="5" id="Quy-8M-8Cv"/>
-                            <constraint firstItem="qSF-y2-GaV" firstAttribute="bottom" secondItem="ms7-P8-Xik" secondAttribute="bottom" constant="64" id="TDu-GX-qE5"/>
+                            <constraint firstItem="qSF-y2-GaV" firstAttribute="bottom" secondItem="ms7-P8-Xik" secondAttribute="bottom" constant="60" id="TDu-GX-qE5"/>
                             <constraint firstItem="BNo-3L-vDi" firstAttribute="leading" secondItem="qSF-y2-GaV" secondAttribute="leading" constant="43" id="TN7-Yp-Wu7"/>
                             <constraint firstItem="3kX-tW-E2M" firstAttribute="top" secondItem="5TT-KX-B6b" secondAttribute="bottom" constant="20" id="VUz-Qu-810"/>
                             <constraint firstItem="8wP-gH-mhS" firstAttribute="top" secondItem="BgE-CD-KHa" secondAttribute="bottom" constant="20" id="WWs-dO-fes"/>
@@ -189,7 +189,7 @@
                             <constraint firstItem="dUp-dP-XSz" firstAttribute="top" secondItem="PCW-IP-rnr" secondAttribute="bottom" constant="10" id="bKe-LK-ZG7"/>
                             <constraint firstItem="qSF-y2-GaV" firstAttribute="top" secondItem="BNo-3L-vDi" secondAttribute="top" constant="10" id="fnI-fp-WCG"/>
                             <constraint firstItem="3kX-tW-E2M" firstAttribute="leading" secondItem="qSF-y2-GaV" secondAttribute="leading" constant="43" id="gZr-RT-P9J"/>
-                            <constraint firstItem="qSF-y2-GaV" firstAttribute="bottom" secondItem="bcH-9W-LPr" secondAttribute="bottom" constant="64" id="gob-dU-19k"/>
+                            <constraint firstItem="qSF-y2-GaV" firstAttribute="bottom" secondItem="bcH-9W-LPr" secondAttribute="bottom" constant="60" id="gob-dU-19k"/>
                             <constraint firstItem="8wP-gH-mhS" firstAttribute="leading" secondItem="qSF-y2-GaV" secondAttribute="leading" constant="43" id="hn8-d2-QaD"/>
                             <constraint firstItem="ZBA-zU-WQg" firstAttribute="leading" secondItem="qSF-y2-GaV" secondAttribute="leading" constant="43" id="iQk-06-Bp4"/>
                             <constraint firstItem="qSF-y2-GaV" firstAttribute="trailing" secondItem="ms7-P8-Xik" secondAttribute="trailing" constant="89" id="jy6-Am-aLV"/>
@@ -233,8 +233,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vc8-Kr-MQy">
+                                <rect key="frame" x="43" y="293" width="123" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-wL-EDC">
+                                <rect key="frame" x="43" y="106" width="231" height="31"/>
+                                <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
+                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="et9-Wh-ftv">
-                                <rect key="frame" x="89" y="378" width="76.666666666666686" height="35"/>
+                                <rect key="frame" x="89" y="689" width="76.666666666666686" height="35"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="tintColor" systemColor="systemGray3Color"/>
                                 <state key="normal" title="Button"/>
@@ -254,7 +266,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-R3-CbY">
-                                <rect key="frame" x="227.33333333333334" y="378" width="76.666666666666657" height="35"/>
+                                <rect key="frame" x="227.33333333333334" y="689" width="76.666666666666657" height="35"/>
                                 <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
@@ -273,34 +285,22 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-wL-EDC">
-                                <rect key="frame" x="54" y="106" width="231" height="31"/>
-                                <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="New Password" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Vc8-Kr-MQy">
-                                <rect key="frame" x="43" y="293" width="123" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
-                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="sv1-gt-Opn"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RD6-TC-PJf" firstAttribute="top" secondItem="CHA-wQ-jAm" secondAttribute="bottom" constant="20" id="5e9-3Y-Wss"/>
                             <constraint firstItem="dJT-Ya-sjJ" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="43" id="6cm-jV-60s"/>
-                            <constraint firstItem="Qap-wL-EDC" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="54" id="Dwo-ig-aj9"/>
+                            <constraint firstItem="Qap-wL-EDC" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="43" id="Dwo-ig-aj9"/>
                             <constraint firstItem="et9-Wh-ftv" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="89" id="Fpv-wc-f4c"/>
                             <constraint firstItem="CHA-wQ-jAm" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="43" id="Gu1-dY-DJT"/>
                             <constraint firstItem="Zac-R3-CbY" firstAttribute="width" secondItem="et9-Wh-ftv" secondAttribute="width" id="I9T-03-rvv"/>
                             <constraint firstItem="Vc8-Kr-MQy" firstAttribute="top" secondItem="RD6-TC-PJf" secondAttribute="bottom" constant="5" id="N3K-QS-di6"/>
                             <constraint firstItem="RD6-TC-PJf" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="43" id="N7F-iX-ulW"/>
                             <constraint firstItem="Vc8-Kr-MQy" firstAttribute="leading" secondItem="sv1-gt-Opn" secondAttribute="leading" constant="43" id="QVp-ND-Hym"/>
-                            <constraint firstItem="sv1-gt-Opn" firstAttribute="bottom" secondItem="Zac-R3-CbY" secondAttribute="bottom" constant="405" id="UCC-LW-dSI"/>
+                            <constraint firstItem="sv1-gt-Opn" firstAttribute="bottom" secondItem="Zac-R3-CbY" secondAttribute="bottom" constant="94" id="UCC-LW-dSI"/>
                             <constraint firstItem="sv1-gt-Opn" firstAttribute="trailing" secondItem="Zac-R3-CbY" secondAttribute="trailing" constant="89" id="cMm-CQ-wv2"/>
-                            <constraint firstItem="sv1-gt-Opn" firstAttribute="bottom" secondItem="et9-Wh-ftv" secondAttribute="bottom" constant="405" id="mcb-iA-h7O"/>
+                            <constraint firstItem="sv1-gt-Opn" firstAttribute="bottom" secondItem="et9-Wh-ftv" secondAttribute="bottom" constant="94" id="mcb-iA-h7O"/>
                             <constraint firstItem="CHA-wQ-jAm" firstAttribute="top" secondItem="dJT-Ya-sjJ" secondAttribute="bottom" constant="5" id="pKc-Tg-gJc"/>
                             <constraint firstItem="Qap-wL-EDC" firstAttribute="top" secondItem="sv1-gt-Opn" secondAttribute="top" constant="47" id="r70-vj-vXY"/>
                             <constraint firstItem="dJT-Ya-sjJ" firstAttribute="top" secondItem="Qap-wL-EDC" secondAttribute="bottom" constant="50" id="yiT-Bc-bpQ"/>
@@ -310,6 +310,163 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urm-vM-FHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="810" y="901"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="90o-qI-rGj">
+            <objects>
+                <viewController id="SKB-Gg-tEF" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Qhh-je-L9N">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload Resume" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf6-GJ-7g6">
+                                <rect key="frame" x="43" y="105" width="208" height="31"/>
+                                <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
+                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We'll automatically extract information from your resume to better match you to job opportunities!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3AF-9l-Zct">
+                                <rect key="frame" x="43" y="156" width="300" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="i13-vd-Pqh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload a file from your device. Accepted file types: PDF, DOC, and DOCX." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L8-lE-h23">
+                                <rect key="frame" x="43" y="302" width="300" height="61"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Cbt-d8-Ghh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use your camera to a scan a physical copy of your resume. Make sure it's easy to read and in a well-lit environment." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8Q-kG-Wmj">
+                                <rect key="frame" x="43" y="458" width="300" height="81.333333333333371"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="1VL-XB-jJ3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LQo-rM-Odr">
+                                <rect key="frame" x="43" y="257" width="143" height="35"/>
+                                <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="doc.fill" catalog="system" imagePlacement="leading" title="Upload File" imagePadding="10">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25Y-Qb-GEw">
+                                <rect key="frame" x="43" y="413" width="148" height="35"/>
+                                <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <buttonConfiguration key="configuration" style="filled" image="camera.fill" catalog="system" title="Scan Copy" imagePadding="10">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGS-mD-UPt">
+                                <rect key="frame" x="92" y="689" width="76.666666666666686" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGray3Color"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaG-GS-DcW">
+                                <rect key="frame" x="229.99999999999997" y="689" width="76.666666666666657" height="35"/>
+                                <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated: September 30, 2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6J-ag-r7V">
+                                <rect key="frame" x="56" y="606" width="281" height="21"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="h7p-LJ-IHq"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="FaG-GS-DcW" firstAttribute="width" secondItem="qGS-mD-UPt" secondAttribute="width" id="0Pz-pB-7KT"/>
+                            <constraint firstItem="a6J-ag-r7V" firstAttribute="centerX" secondItem="Qhh-je-L9N" secondAttribute="centerX" id="4Wk-06-cvU"/>
+                            <constraint firstItem="LQo-rM-Odr" firstAttribute="top" secondItem="3AF-9l-Zct" secondAttribute="bottom" constant="40" id="4sv-4Q-kt6"/>
+                            <constraint firstItem="h7p-LJ-IHq" firstAttribute="top" secondItem="nf6-GJ-7g6" secondAttribute="top" constant="13" id="Ajt-h3-3bp"/>
+                            <constraint firstItem="h7p-LJ-IHq" firstAttribute="trailing" secondItem="FaG-GS-DcW" secondAttribute="trailing" constant="86.333333333333371" id="Cn1-fy-NFd"/>
+                            <constraint firstItem="h7p-LJ-IHq" firstAttribute="bottom" secondItem="FaG-GS-DcW" secondAttribute="bottom" constant="60" id="NqX-t7-E33"/>
+                            <constraint firstItem="b8Q-kG-Wmj" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="PnJ-cZ-gGU"/>
+                            <constraint firstItem="3AF-9l-Zct" firstAttribute="top" secondItem="nf6-GJ-7g6" secondAttribute="bottom" constant="20" id="Qgy-wX-e76"/>
+                            <constraint firstItem="5L8-lE-h23" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="ScS-Yl-ILr"/>
+                            <constraint firstItem="b8Q-kG-Wmj" firstAttribute="top" secondItem="25Y-Qb-GEw" secondAttribute="bottom" constant="10" id="Ugr-12-mJy"/>
+                            <constraint firstItem="25Y-Qb-GEw" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="ZWi-7E-HSO"/>
+                            <constraint firstItem="3AF-9l-Zct" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="eUf-6w-1bC"/>
+                            <constraint firstItem="h7p-LJ-IHq" firstAttribute="bottom" secondItem="qGS-mD-UPt" secondAttribute="bottom" constant="60" id="iNu-SR-WxX"/>
+                            <constraint firstItem="LQo-rM-Odr" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="j3y-cm-bN4"/>
+                            <constraint firstItem="nf6-GJ-7g6" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="43" id="qOn-Kl-roc"/>
+                            <constraint firstItem="a6J-ag-r7V" firstAttribute="top" secondItem="b8Q-kG-Wmj" secondAttribute="bottom" constant="66.666666666666629" id="sDP-xe-UwB"/>
+                            <constraint firstItem="25Y-Qb-GEw" firstAttribute="top" secondItem="5L8-lE-h23" secondAttribute="bottom" constant="50" id="xZ2-Wb-XiA"/>
+                            <constraint firstItem="qGS-mD-UPt" firstAttribute="leading" secondItem="h7p-LJ-IHq" secondAttribute="leading" constant="92" id="yb0-3t-8ex"/>
+                            <constraint firstItem="5L8-lE-h23" firstAttribute="top" secondItem="LQo-rM-Odr" secondAttribute="bottom" constant="10" id="zOp-3k-vLn"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lHs-EN-fHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1572" y="901"/>
         </scene>
         <!--StartVC-->
         <scene sceneID="tne-QT-ifu">
@@ -710,6 +867,8 @@ Find the perfect job for you.</string>
     </scenes>
     <resources>
         <image name="Job" width="500" height="500"/>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="doc.fill" catalog="system" width="111" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
