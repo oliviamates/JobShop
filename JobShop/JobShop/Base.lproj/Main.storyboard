@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="0AP-gU-DK8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
@@ -182,6 +182,9 @@
                                                     <buttonConfiguration key="configuration" style="filled" title="Update Resume">
                                                         <fontDescription key="titleFontDescription" type="system" pointSize="11"/>
                                                     </buttonConfiguration>
+                                                    <connections>
+                                                        <segue destination="SKB-Gg-tEF" kind="presentation" modalPresentationStyle="fullScreen" id="mWL-Ke-8ve"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -789,6 +792,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="8e7-7U-Wow" kind="show" id="KdL-7x-fE6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qGS-mD-UPt">
                                 <rect key="frame" x="92" y="723" width="76.666666666666686" height="35"/>
@@ -872,6 +878,31 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHs-EN-fHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3425.1908396946565" y="900.70422535211276"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mjg-zW-L7V">
+            <objects>
+                <viewController id="8e7-7U-Wow" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YjU-Of-0xk">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[placeholder for camera scanner]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-aW-k3n">
+                                <rect key="frame" x="69" y="382" width="254" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="wFD-Dk-xkR"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ih8-eW-Aet"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y3r-je-Y7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4237" y="901"/>
         </scene>
         <!--StartVC-->
         <scene sceneID="tne-QT-ifu">
@@ -1489,6 +1520,7 @@ Find the perfect job for you.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="mWL-Ke-8ve"/>
         <segue reference="f9o-ra-CAo"/>
     </inferredMetricsTieBreakers>
     <resources>
