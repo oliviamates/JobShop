@@ -2,7 +2,7 @@
 //  UploadResumeVC.swift
 //  JobShop
 //
-//  Created by Mansi Madhani on 10/17/26.
+//  Created by Mansi Madhani on 10/20/26.
 //
 
 import UIKit
@@ -16,6 +16,12 @@ class UploadResumeVC: UIViewController {
     }
     
 
+    @IBAction func cancelPressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
+    @IBAction func savePressed(_ sender: Any) {
+        dismiss(animated: true)
+    }
     /*
     // MARK: - Navigation
 

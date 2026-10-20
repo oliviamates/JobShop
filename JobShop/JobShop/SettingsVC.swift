@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class SettingsVC: UITableViewController {
 
+    @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     let db = Firestore.firestore()
 
@@ -30,6 +31,8 @@ class SettingsVC: UITableViewController {
                 let first = data["firstName"] as? String ?? ""
                 let last = data["lastName"] as? String ?? ""
                 self.nameLabel.text = "\(first) \(last)"
+                let email = data["email"] as? String ?? ""
+                self.emailLabel.text = "\(email)"
             }
         }
     }

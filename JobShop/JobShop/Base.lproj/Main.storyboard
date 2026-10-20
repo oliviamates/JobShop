@@ -61,8 +61,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Austin, TX" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BCE-xy-sYJ">
-                                                    <rect key="frame" x="16" y="43.333333333333329" width="70.333333333333329" height="18"/>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="johnny.appleseed@gmail.com" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BCE-xy-sYJ">
+                                                    <rect key="frame" x="16" y="43.333333333333329" width="203.66666666666666" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -348,6 +348,7 @@
                         <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" style="plain" id="IUe-IK-ELJ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="emailLabel" destination="BCE-xy-sYJ" id="6K3-p1-ySd"/>
                         <outlet property="nameLabel" destination="Uu6-Ht-REF" id="0i7-X5-enL"/>
                     </connections>
                 </tableViewController>
@@ -480,6 +481,7 @@
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="johnny.appleseed@gmail.com" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5TT-KX-B6b">
                                 <rect key="frame" x="43" y="420" width="300" height="34"/>
+                                <color key="backgroundColor" systemColor="systemGray6Color"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="2dU-IN-fCJ"/>
                                 </constraints>
@@ -498,7 +500,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Update password"/>
                                 <connections>
-                                    <segue destination="RPp-Bs-sHa" kind="presentation" identifier="ProfileToPassword" modalPresentationStyle="fullScreen" id="esC-Tx-gTc"/>
+                                    <segue destination="RPp-Bs-sHa" kind="presentation" modalPresentationStyle="fullScreen" id="Utn-DM-osC"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-P8-Xik">
@@ -585,6 +587,9 @@
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Update location"/>
+                                <connections>
+                                    <segue destination="T3U-zp-mTS" kind="show" id="ZFB-Ui-pQx"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qTh-Y1-l8p" userLabel="error message">
                                 <rect key="frame" x="46" y="681" width="300" height="50"/>
@@ -693,6 +698,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="RPp-Bs-sHa" eventType="touchUpInside" id="1dH-Ol-HDx"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zac-R3-CbY">
                                 <rect key="frame" x="227.33333333333334" y="689" width="76.666666666666657" height="35"/>
@@ -714,12 +722,23 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="RPp-Bs-sHa" eventType="touchUpInside" id="VOR-vS-y3K"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Update Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qap-wL-EDC">
                                 <rect key="frame" x="43.000000000000014" y="130" width="213.33333333333337" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" name="DarkGreen"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce6-fw-XdK" userLabel="error message">
+                                <rect key="frame" x="49" y="455" width="300" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="DarkGreen"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -743,15 +762,20 @@
                             <constraint firstItem="dJT-Ya-sjJ" firstAttribute="top" secondItem="Qap-wL-EDC" secondAttribute="bottom" constant="50" id="yiT-Bc-bpQ"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="errorMessage" destination="ce6-fw-XdK" id="KXZ-DN-mfZ"/>
+                        <outlet property="newPasswordField" destination="Vc8-Kr-MQy" id="Rn4-tx-Jtt"/>
+                        <outlet property="oldPasswordField" destination="CHA-wQ-jAm" id="1Pt-6k-Vbf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urm-vM-FHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2663.3587786259541" y="900.70422535211276"/>
         </scene>
-        <!--View Controller-->
+        <!--Upload ResumeVC-->
         <scene sceneID="90o-qI-rGj">
             <objects>
-                <viewController id="SKB-Gg-tEF" sceneMemberID="viewController">
+                <viewController id="SKB-Gg-tEF" customClass="UploadResumeVC" customModule="JobShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qhh-je-L9N">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -803,6 +827,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="8e7-7U-Wow" kind="show" id="Zt0-F6-kfC"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25Y-Qb-GEw">
                                 <rect key="frame" x="43" y="393.33333333333331" width="148" height="35"/>
@@ -846,6 +873,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="SKB-Gg-tEF" eventType="touchUpInside" id="cep-sf-hWZ"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaG-GS-DcW">
                                 <rect key="frame" x="229.99999999999997" y="723" width="76.666666666666657" height="35"/>
@@ -867,6 +897,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="SKB-Gg-tEF" eventType="touchUpInside" id="qwp-bN-iq6"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated: September 30, 2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6J-ag-r7V">
                                 <rect key="frame" x="56" y="586.33333333333337" width="281" height="21"/>
@@ -919,8 +952,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[placeholder for camera scanner]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-aW-k3n">
-                                <rect key="frame" x="69" y="382" width="254" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[placeholder for camera scanner/uploading!]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-aW-k3n">
+                                <rect key="frame" x="27" y="359" width="338" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -1632,18 +1665,18 @@ Find the perfect job for you.</string>
             <objects>
                 <viewController id="T3U-zp-mTS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bCr-x1-wfU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" text="Austin, TX" translatesAutoresizingMaskIntoConstraints="NO" id="hny-ag-RYW">
-                                <rect key="frame" x="43" y="172" width="307" height="64"/>
+                                <rect key="frame" x="43" y="176" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="T3U-zp-mTS" id="EFH-lz-GLa"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cAG-NR-hEW">
-                                <rect key="frame" x="43" y="105" width="204" height="32"/>
+                                <rect key="frame" x="43" y="109" width="204" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -1656,7 +1689,7 @@ Find the perfect job for you.</string>
                             <constraint firstItem="cAG-NR-hEW" firstAttribute="leading" secondItem="Hfp-WN-aZf" secondAttribute="leading" constant="43" id="3kJ-dc-BHJ"/>
                             <constraint firstItem="Hfp-WN-aZf" firstAttribute="trailing" secondItem="hny-ag-RYW" secondAttribute="trailing" constant="43" id="RIg-4b-Xd4"/>
                             <constraint firstItem="hny-ag-RYW" firstAttribute="top" secondItem="cAG-NR-hEW" secondAttribute="bottom" constant="35" id="fln-Cc-BIB"/>
-                            <constraint firstItem="Hfp-WN-aZf" firstAttribute="top" secondItem="cAG-NR-hEW" secondAttribute="top" constant="13" id="hLK-Ys-sho"/>
+                            <constraint firstItem="Hfp-WN-aZf" firstAttribute="top" secondItem="cAG-NR-hEW" secondAttribute="top" constant="-50" id="hLK-Ys-sho"/>
                             <constraint firstItem="hny-ag-RYW" firstAttribute="leading" secondItem="Hfp-WN-aZf" secondAttribute="leading" constant="43" id="k2U-wv-QvH"/>
                         </constraints>
                     </view>
@@ -1668,6 +1701,7 @@ Find the perfect job for you.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
+        <segue reference="KdL-7x-fE6"/>
         <segue reference="mWL-Ke-8ve"/>
         <segue reference="f9o-ra-CAo"/>
     </inferredMetricsTieBreakers>
@@ -1691,6 +1725,9 @@ Find the perfect job for you.</string>
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.78039215689999997" green="0.78039215689999997" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.21960784310000001" blue="0.23529411759999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
