@@ -358,21 +358,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="kU9-zO-La0">
-                                <rect key="frame" x="43" y="278" width="307" height="64"/>
+                                <rect key="frame" x="43" y="219" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="6o1-47-Utb" id="sq5-C9-PxX"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56h-2d-yAm">
-                                <rect key="frame" x="43" y="211" width="226" height="32"/>
+                                <rect key="frame" x="43" y="152" width="226" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-W8-6lY">
-                                <rect key="frame" x="43" y="382" width="133" height="35"/>
+                                <rect key="frame" x="43" y="323" width="133" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Austin, TX" imagePadding="15">
@@ -380,7 +380,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uj-Wn-UB1">
-                                <rect key="frame" x="43" y="427" width="193" height="35"/>
+                                <rect key="frame" x="43" y="368" width="193" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="San Francisco, CA" imagePadding="15">
@@ -388,7 +388,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-61-vgb">
-                                <rect key="frame" x="43" y="472" width="179" height="35"/>
+                                <rect key="frame" x="43" y="413" width="179" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Los Angeles, CA" imagePadding="15">
@@ -396,7 +396,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-4r-Cnh">
-                                <rect key="frame" x="43" y="517" width="132" height="35"/>
+                                <rect key="frame" x="43" y="458" width="132" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Dallas, TX" imagePadding="15">
@@ -404,7 +404,7 @@
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-vN-UYf">
-                                <rect key="frame" x="43" y="562" width="144" height="35"/>
+                                <rect key="frame" x="43" y="503" width="144" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Seattle, WA" imagePadding="15">
@@ -949,7 +949,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="2og-pZ-y75" kind="presentation" modalPresentationStyle="fullScreen" id="IV4-lQ-Ye1"/>
+                                    <segue destination="2og-pZ-y75" kind="show" id="5gz-VA-XUG"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Job" translatesAutoresizingMaskIntoConstraints="NO" id="ggv-gz-ARJ">
@@ -978,8 +978,8 @@ Find the perfect job for you.</string>
         <!--LogInVC-->
         <scene sceneID="zt0-Xr-yO7">
             <objects>
-                <viewController title="LogInVC" id="2og-pZ-y75" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="ZRT-JG-Xia">
+                <viewController title="LogInVC" modalPresentationStyle="fullScreen" id="2og-pZ-y75" customClass="LogInVC" customModule="JobShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ZRT-JG-Xia" customClass="lo">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -1020,6 +1020,9 @@ Find the perfect job for you.</string>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In">
                                     <color key="baseBackgroundColor" name="DarkGreen"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="loginDone:" destination="2og-pZ-y75" eventType="touchUpInside" id="XFc-xp-x9d"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tiq-Cz-gQJ">
                                 <rect key="frame" x="72" y="442" width="74" height="21"/>
@@ -1032,7 +1035,7 @@ Find the perfect job for you.</string>
                                 <rect key="frame" x="71" y="490" width="250" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D98-4z-0aJ">
                                 <rect key="frame" x="107" y="617" width="191" height="34"/>
@@ -1050,10 +1053,25 @@ Find the perfect job for you.</string>
                                     <color key="baseForegroundColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qK-ok-f8I" userLabel="error message">
+                                <rect key="frame" x="46" y="708" width="300" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="DarkGreen"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="N1b-1h-Yhr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="YTt-qN-OpQ"/>
+                    <connections>
+                        <outlet property="emailField" destination="45s-Xb-uWf" id="e4q-bt-4zF"/>
+                        <outlet property="errorMessage" destination="5qK-ok-f8I" id="r5v-Xc-Vsr"/>
+                        <outlet property="passwordField" destination="uoY-KW-n9b" id="YSM-wb-4BG"/>
+                        <segue destination="0AP-gU-DK8" kind="presentation" identifier="LoginToSettingsIdentifier" modalPresentationStyle="fullScreen" id="L4h-1X-cpL"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VCW-91-vId" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1157,6 +1175,14 @@ Find the perfect job for you.</string>
                                 <rect key="frame" x="71" y="488" width="178" height="34.333333333333258"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </datePicker>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDW-wa-lmu" userLabel="error message">
+                                <rect key="frame" x="46" y="707" width="300" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" name="DarkGreen"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Fba-X2-qtL"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1165,6 +1191,7 @@ Find the perfect job for you.</string>
                     <connections>
                         <outlet property="birthdayField" destination="10h-Xh-6Pz" id="VAp-pb-pkc"/>
                         <outlet property="emailField" destination="IzP-OA-w7r" id="NJ4-lA-HrZ"/>
+                        <outlet property="errorMessage" destination="KDW-wa-lmu" id="9eK-nX-enS"/>
                         <outlet property="firstNameField" destination="0kE-CF-BVG" id="uVf-AL-ZTz"/>
                         <outlet property="lastNameField" destination="8rj-qG-Wks" id="IMW-Hv-fVf"/>
                         <outlet property="passwordField" destination="ddG-Lz-9Sa" id="Qje-gm-sAP"/>
@@ -1340,10 +1367,10 @@ Find the perfect job for you.</string>
         <!--Navigation Controller-->
         <scene sceneID="LYC-NI-k5Q">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0AP-gU-DK8" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" modalPresentationStyle="fullScreen" id="0AP-gU-DK8" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" largeTitles="YES" id="5zP-KJ-ymA">
-                        <rect key="frame" x="0.0" y="118" width="393" height="106"/>
+                        <rect key="frame" x="0.0" y="59" width="393" height="106"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -1364,21 +1391,21 @@ Find the perfect job for you.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="FAb-KW-neT">
-                                <rect key="frame" x="43" y="278" width="307" height="64"/>
+                                <rect key="frame" x="43" y="219" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="wXw-ny-Bsi" id="FdC-GT-dyA"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Job Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGY-7z-G4k">
-                                <rect key="frame" x="43" y="211" width="111" height="32"/>
+                                <rect key="frame" x="43" y="152" width="111" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9WY-gZ-JcC">
-                                <rect key="frame" x="43" y="382" width="130" height="35"/>
+                                <rect key="frame" x="43" y="323" width="130" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Part-Time" imagePadding="15">
@@ -1386,7 +1413,7 @@ Find the perfect job for you.</string>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6cb-hF-uOX">
-                                <rect key="frame" x="43" y="427" width="126" height="35"/>
+                                <rect key="frame" x="43" y="368" width="126" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Full-Time" imagePadding="15">
@@ -1423,21 +1450,21 @@ Find the perfect job for you.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="4OF-Ot-epX">
-                                <rect key="frame" x="43" y="278" width="307" height="64"/>
+                                <rect key="frame" x="43" y="219" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="Ohq-ZA-aIy" id="dsN-Sz-9lf"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="anK-EF-mUg">
-                                <rect key="frame" x="43" y="211" width="108" height="32"/>
+                                <rect key="frame" x="43" y="152" width="108" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mtC-Cj-Dyt">
-                                <rect key="frame" x="43" y="382" width="229" height="35"/>
+                                <rect key="frame" x="43" y="323" width="229" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Software Development" imagePadding="15">
@@ -1445,7 +1472,7 @@ Find the perfect job for you.</string>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ma8-nK-OV7">
-                                <rect key="frame" x="43" y="427" width="82" height="35"/>
+                                <rect key="frame" x="43" y="368" width="82" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="iOS" imagePadding="15">
@@ -1453,7 +1480,7 @@ Find the perfect job for you.</string>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G0h-S2-hon">
-                                <rect key="frame" x="43" y="472" width="106" height="35"/>
+                                <rect key="frame" x="43" y="413" width="106" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="XCode" imagePadding="15">
@@ -1461,7 +1488,7 @@ Find the perfect job for you.</string>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CMc-m6-T7S">
-                                <rect key="frame" x="43" y="517" width="109" height="35"/>
+                                <rect key="frame" x="43" y="458" width="109" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Python" imagePadding="15">
@@ -1502,21 +1529,21 @@ Find the perfect job for you.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="dPg-2I-KtC">
-                                <rect key="frame" x="43" y="278" width="307" height="64"/>
+                                <rect key="frame" x="43" y="219" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="U5o-OM-jdU" id="OuM-AO-A1l"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Industries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8g9-RR-BEZ">
-                                <rect key="frame" x="43" y="211" width="122" height="32"/>
+                                <rect key="frame" x="43" y="152" width="122" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hWN-3Y-l6L">
-                                <rect key="frame" x="43" y="382" width="143" height="35"/>
+                                <rect key="frame" x="43" y="323" width="143" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Technology" imagePadding="15">
@@ -1524,7 +1551,7 @@ Find the perfect job for you.</string>
                                 </buttonConfiguration>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sjf-0E-wZu">
-                                <rect key="frame" x="43" y="427" width="115" height="35"/>
+                                <rect key="frame" x="43" y="368" width="115" height="35"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Finance" imagePadding="15">
