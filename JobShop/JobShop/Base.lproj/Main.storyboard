@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -884,7 +884,7 @@
             <objects>
                 <viewController id="8e7-7U-Wow" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YjU-Of-0xk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[placeholder for camera scanner]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-aW-k3n">
@@ -1311,6 +1311,21 @@ Find the perfect job for you.</string>
             </objects>
             <point key="canvasLocation" x="2887.7862595419847" y="98.591549295774655"/>
         </scene>
+        <!--MatchesVC-->
+        <scene sceneID="pAY-rD-mQg">
+            <objects>
+                <viewController id="oXX-l3-e7b" customClass="MatchesVC" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YnS-tO-N91">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="dhT-12-qdB"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IFz-No-QHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698" y="902"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="LYC-NI-k5Q">
             <objects>
@@ -1525,10 +1540,10 @@ Find the perfect job for you.</string>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
-        <image name="doc.fill" catalog="system" width="111" height="128"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="69"/>
-        <image name="minus.circle" catalog="system" width="128" height="128"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="minus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
