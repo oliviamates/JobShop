@@ -8,8 +8,16 @@ class CreateAccountVC: UIViewController {
     @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
-
+    @IBOutlet weak var birthdayField: UIDatePicker!
+    
     let db = Firestore.firestore()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        birthdayField.datePickerMode = .date
+        birthdayField.maximumDate = Date()
+        birthdayField.date = Date()
+    }
 
     @IBAction func step1Done(_ sender: Any) {
         if firstNameField.text!.isEmpty || lastNameField.text!.isEmpty {
@@ -45,7 +53,8 @@ class CreateAccountVC: UIViewController {
                     "uid": user.uid,
                     "firstName": self.firstNameField.text!,
                     "lastName": self.lastNameField.text!,
-                    "email": email
+                    "email": email,
+                    "birthday": Timestamp(date: self.birthdayField.date)
                 ]) { err in
                     if let err = err {
                         self.makePopup(popupTitle: "Error",
