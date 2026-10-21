@@ -26,24 +26,12 @@ class ExpandedJobVC: UIViewController {
         view.backgroundColor = Theme.background
  
         let header = addHeaderBar()
- 
-        let back = UIButton(type: .system)
-        back.setImage(UIImage(systemName: "arrow.left",
-                              withConfiguration: UIImage.SymbolConfiguration(pointSize: 28, weight: .bold)), for: .normal)
-        back.tintColor = .black
-        back.translatesAutoresizingMaskIntoConstraints = false
-        back.addAction(UIAction { [weak self] _ in
-            self?.navigationController?.popViewController(animated: true)
-        }, for: .touchUpInside)
- 
         let menu = makeMenuButton()
-        header.addSubview(back)
+
         header.addSubview(menu)
         NSLayoutConstraint.activate([
-            back.leadingAnchor.constraint(equalTo: header.leadingAnchor, constant: 20),
-            back.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: -10),
             menu.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -20),
-            menu.centerYAnchor.constraint(equalTo: back.centerYAnchor)
+            menu.centerYAnchor.constraint(equalTo: header.centerYAnchor)
         ])
  
         buildContent(below: header)
@@ -123,10 +111,7 @@ class ExpandedJobVC: UIViewController {
         statusButton.setContentHuggingPriority(.defaultLow, for: .horizontal)
         statusButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
         refreshStatusButton()
-        let magnifier = UIImageView(image: UIImage(systemName: "magnifyingglass",
-                                                   withConfiguration: UIImage.SymbolConfiguration(pointSize: 20, weight: .regular)))
-        magnifier.tintColor = .black
-        let statusRow = UIStackView(arrangedSubviews: [statusLabel, statusButton, magnifier])
+        let statusRow = UIStackView(arrangedSubviews: [statusLabel, statusButton])
         statusRow.spacing = 10
         statusRow.alignment = .center
  

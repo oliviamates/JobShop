@@ -109,7 +109,7 @@ extension UIViewController {
 
 
     private var isSettingsScreen: Bool {
-        !(self is MatchesVC) && !(self is SavedJobsVC) && !(self is ExpandedJobVC)
+        !(self is MatchesVC) && !(self is SavedJobsVC) && !(self is ExpandedJobVC) 
     }
     
     func makeNavMenu() -> UIMenu {
@@ -119,7 +119,7 @@ extension UIViewController {
             UIAction(title: "Saved Jobs", image: UIImage(systemName: "heart"),
                      state: self is SavedJobsVC ? .on : .off) { [weak self] _ in self?.navigate(to: .saved) },
             UIAction(title: "Settings", image: UIImage(systemName: "gearshape"),
-                     state: isSettingsScreen ? .on : .off) { [weak self] _ in self?.navigate(to: .settings) }
+                     state: self is SettingsVC ? .on : .off) { [weak self] _ in self?.navigate(to: .settings) }
         ])
     }
 
@@ -166,9 +166,9 @@ extension UIViewController {
             return
         }
         switch destination {
-        case .matches: nav.pushViewController(MatchesVC(), animated: true)
+        case .matches: nav.popToRootViewController(animated: true)
         case .saved: nav.pushViewController(SavedJobsVC(), animated: true)
-        case .settings: nav.popToRootViewController(animated: true)   // Settings is the root of the stack
+        case .settings: nav.pushViewController(SettingsVC(), animated: true)
         }
     }
 }
