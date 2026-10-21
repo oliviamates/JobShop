@@ -9,6 +9,7 @@ import UIKit
 
 class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
 
+    @IBOutlet weak var titleJob: UILabel!
     private let store = SavedJobsStore.shared
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let searchField = UITextField()
@@ -19,20 +20,12 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Theme.background
-        let title = makeLabel("Saved Jobs", size: 28, weight: .bold, color: Theme.green, lines: 1)
-        title.translatesAutoresizingMaskIntoConstraints = false
         let menu = makeMenuBarButtonItem()
+        navigationItem.setHidesBackButton(true, animated: true)
 
-        view.addSubview(title)
         navigationItem.rightBarButtonItem = makeMenuBarButtonItem()
 
-        NSLayoutConstraint.activate([
-            title.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20),
-            title.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 28),
-            title.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -28)
-        ])
-
-        let searchContainer = setupSearchRow(below: title)
+        let searchContainer = setupSearchRow(below: titleJob)
         setupTable(below: searchContainer)
         setupEmptyLabel()
     }

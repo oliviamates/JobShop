@@ -24,6 +24,8 @@ class SettingsVC: UITableViewController {
         } else {
             navigationItem.rightBarButtonItem = makeMenuBarButtonItem()   // created in code
         }
+        self.navigationItem.setHidesBackButton(true, animated: true)
+
     }
 
     override func viewWillAppear(_ animated: Bool) {
