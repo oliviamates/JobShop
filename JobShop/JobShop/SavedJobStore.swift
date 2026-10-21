@@ -108,9 +108,6 @@ extension UIViewController {
     }
 
 
-    private var isSettingsScreen: Bool {
-        !(self is MatchesVC) && !(self is SavedJobsVC) && !(self is ExpandedJobVC) 
-    }
     
     func makeNavMenu() -> UIMenu {
         UIMenu(children: [
@@ -156,7 +153,7 @@ extension UIViewController {
             switch destination {
             case .matches: return vc is MatchesVC
             case .saved: return vc is SavedJobsVC
-            case .settings: return false
+            case .settings: return vc is SettingsVC
             }
         }
 
@@ -166,7 +163,7 @@ extension UIViewController {
             return
         }
         switch destination {
-        case .matches: nav.popToRootViewController(animated: true)
+        case .matches: nav.pushViewController(MatchesVC(), animated: true)
         case .saved: nav.pushViewController(SavedJobsVC(), animated: true)
         case .settings: nav.pushViewController(SettingsVC(), animated: true)
         }
