@@ -13,10 +13,17 @@ class SettingsVC: UITableViewController {
 
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var menuButton: UIBarButtonItem!
     let db = Firestore.firestore()
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        menuButton.menu = makeNavMenu()
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
         loadProfile()
     }
     

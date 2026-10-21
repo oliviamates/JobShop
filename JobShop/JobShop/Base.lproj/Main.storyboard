@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -349,12 +349,13 @@
                     </navigationItem>
                     <connections>
                         <outlet property="emailLabel" destination="BCE-xy-sYJ" id="6K3-p1-ySd"/>
+                        <outlet property="menuButton" destination="IUe-IK-ELJ" id="4oR-5U-etQ"/>
                         <outlet property="nameLabel" destination="Uu6-Ht-REF" id="0i7-X5-enL"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1th-ln-LlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1072.5190839694656" y="916.90140845070425"/>
+            <point key="canvasLocation" x="1999.2366412213739" y="916.90140845070425"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="IUW-By-VP1">
@@ -443,7 +444,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFd-7S-Qxl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="118" y="1632"/>
+            <point key="canvasLocation" x="1043.5114503816794" y="1631.6901408450706"/>
         </scene>
         <!--Update ProfileVC-->
         <scene sceneID="VDD-BE-xuj">
@@ -641,7 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rn1-0T-aZ1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1925.9541984732823" y="900.70422535211276"/>
+            <point key="canvasLocation" x="2852.6717557251909" y="900.70422535211276"/>
         </scene>
         <!--Update PasswordVC-->
         <scene sceneID="Jww-bg-Scc">
@@ -770,7 +771,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="urm-vM-FHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663.3587786259541" y="900.70422535211276"/>
+            <point key="canvasLocation" x="3590.0763358778627" y="900.70422535211276"/>
         </scene>
         <!--Upload ResumeVC-->
         <scene sceneID="90o-qI-rGj">
@@ -942,14 +943,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lHs-EN-fHg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3425.1908396946565" y="900.70422535211276"/>
+            <point key="canvasLocation" x="4351.9083969465646" y="900.70422535211276"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Mjg-zW-L7V">
             <objects>
                 <viewController id="8e7-7U-Wow" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YjU-Of-0xk">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[placeholder for camera scanner/uploading!]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kYO-aW-k3n">
@@ -967,7 +968,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y3r-je-Y7M" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4237" y="901"/>
+            <point key="canvasLocation" x="5162.5954198473282" y="900.70422535211276"/>
         </scene>
         <!--StartVC-->
         <scene sceneID="tne-QT-ifu">
@@ -1419,13 +1420,46 @@ Find the perfect job for you.</string>
                     <view key="view" contentMode="scaleToFill" id="YnS-tO-N91">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Your Matches!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2z4-N7-zp5">
+                                <rect key="frame" x="62" y="172" width="269" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="37"/>
+                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bZ8-my-40U">
+                                <rect key="frame" x="16" y="228" width="307" height="64"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wXw-ny-Bsi" id="0GR-kB-vNn"/>
+                                </connections>
+                            </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-lZ-4Cy">
+                                <rect key="frame" x="331" y="243" width="50" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease.circle" catalog="system" title=""/>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="dhT-12-qdB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="XpF-aQ-Zzn">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" style="plain" id="7kI-Gu-HVT"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="filterButton" destination="J8p-lZ-4Cy" id="Avx-Lb-0Tk"/>
+                        <outlet property="menuButton" destination="7kI-Gu-HVT" id="amx-er-M7I"/>
+                        <outlet property="searchBar" destination="bZ8-my-40U" id="ApS-YD-rT4"/>
+                        <outlet property="titleLabel" destination="2z4-N7-zp5" id="iPQ-LS-W6v"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IFz-No-QHV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-698" y="902"/>
+            <point key="canvasLocation" x="228.24427480916029" y="901.4084507042254"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="LYC-NI-k5Q">
@@ -1443,7 +1477,7 @@ Find the perfect job for you.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAv-6K-qzh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="145.80152671755724" y="916.90140845070425"/>
+            <point key="canvasLocation" x="1072.5190839694656" y="916.90140845070425"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="yQy-VZ-4TT">
@@ -1502,7 +1536,7 @@ Find the perfect job for you.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gCA-MZ-gbf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1073" y="1632"/>
+            <point key="canvasLocation" x="1999.2366412213739" y="1631.6901408450706"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Cwg-9L-SgH">
@@ -1581,7 +1615,7 @@ Find the perfect job for you.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="30F-eY-ntK" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2663" y="1632"/>
+            <point key="canvasLocation" x="3588.5496183206105" y="1631.6901408450706"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="HmO-JY-VwL">
@@ -1640,7 +1674,7 @@ Find the perfect job for you.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7HK-EI-rPq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1926" y="1632"/>
+            <point key="canvasLocation" x="2852.6717557251909" y="1631.6901408450706"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="V0B-4a-gha">
@@ -1660,12 +1694,57 @@ Find the perfect job for you.</string>
             </objects>
             <point key="canvasLocation" x="-31.297709923664122" y="98.591549295774655"/>
         </scene>
+        <!--Saved JobsVC-->
+        <scene sceneID="VS3-i5-1lA">
+            <objects>
+                <viewController id="5kP-dW-8cU" customClass="SavedJobsVC" customModule="JobShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Sbr-1S-XvE">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Saved Jobs" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BUP-rG-7Df">
+                                <rect key="frame" x="95" y="154" width="202" height="43"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="37"/>
+                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="kPD-Nv-cJy"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="Hka-b4-Wvg">
+                        <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" style="plain" id="BeO-TL-TBq"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g2l-tX-tGZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-481.67938931297709" y="1662.6760563380283"/>
+        </scene>
+        <!--Expanded JobVC-->
+        <scene sceneID="fE8-T1-IoY">
+            <objects>
+                <viewController id="Tcz-Ob-lEL" customClass="ExpandedJobVC" customModule="JobShop" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9rD-Ms-LOB">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="66x-dt-gFE"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dQG-e5-TZj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2263" y="1663"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="5gq-cc-mtK">
             <objects>
                 <viewController id="T3U-zp-mTS" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bCr-x1-wfU">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="793"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" text="Austin, TX" translatesAutoresizingMaskIntoConstraints="NO" id="hny-ag-RYW">
@@ -1697,7 +1776,43 @@ Find the perfect job for you.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n7D-E6-8EM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-640" y="1632"/>
+            <point key="canvasLocation" x="286.25954198473283" y="1631.6901408450706"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="xrQ-03-1eY">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JdY-Nc-VlM" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tqw-Cs-Q7k">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="oXX-l3-e7b" kind="relationship" relationship="rootViewController" id="o9e-Mw-33o"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oEV-M6-7Ac" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-698.47328244274809" y="901.4084507042254"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="knx-SB-Ap0">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ii-cX-AWJ" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="tJZ-Fg-GU0">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="5kP-dW-8cU" kind="relationship" relationship="rootViewController" id="QEy-Id-gFI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Tr-R0-hB7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1408.3969465648854" y="1662.6760563380283"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
@@ -1707,10 +1822,11 @@ Find the perfect job for you.</string>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
-        <image name="doc.fill" catalog="system" width="111" height="128"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="69"/>
-        <image name="minus.circle" catalog="system" width="128" height="128"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
+        <image name="minus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="DarkGreen">
             <color red="0.10588235294117647" green="0.40392156862745099" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
