@@ -6,7 +6,6 @@
 //
 import UIKit
 
-// MARK: - Theme
 
 enum Theme {
     static let green = UIColor(red: 0.18, green: 0.45, blue: 0.10, alpha: 1)
@@ -52,7 +51,7 @@ enum ApplicationStatus: String, CaseIterable {
 }
 
 struct JobCard {
-    let id = UUID()
+    var id: String { "\(company)|\(title)" }
     let company: String
     let title: String
     let location: String
@@ -96,8 +95,6 @@ func makeChip(_ text: String, fontSize: CGFloat = 9) -> UIView {
     return wrapper
 }
 
-/// Uses an image asset named after the company (e.g. "google", "jane_street") if you add one
-/// to Assets.xcassets; otherwise falls back to a colored first letter.
 enum CompanyLogo {
     static func make(for company: String, size: CGFloat) -> UIView {
         let container = UIView()
@@ -132,7 +129,6 @@ enum CompanyLogo {
     }
 }
 
-// MARK: - Circular match ring
 
 class MatchRingView: UIView {
     private let track = CAShapeLayer()
@@ -180,7 +176,6 @@ class MatchRingView: UIView {
     }
 }
 
-// MARK: - Swipe card
 
 class CardView: UIView {
     let card: JobCard

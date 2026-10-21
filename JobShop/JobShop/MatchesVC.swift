@@ -62,12 +62,15 @@ class MatchesVC: UIViewController {
         ensureTitleAndSearchBarExist()
         setupFilterMenu()
         setupContainer()
+        cardsData.removeAll { store.contains($0) }
         layoutDeckStack()
     }
 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        cardsData.removeAll { store.contains($0) }
+        layoutDeckStack()
         // Refresh heart state in case something was (un)saved on another screen.
         navigationController?.setNavigationBarHidden(false, animated: animated)
         for cardView in cardViews { cardView.setLiked(store.contains(cardView.card)) }
@@ -89,11 +92,9 @@ class MatchesVC: UIViewController {
                 label.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -36)
             ])
             
-            // Assign our fallback to the property so other functions can read it
             self.titleLabel = label
         }
         
-        // ---- 2. HANDLE SEARCH BAR ----
         if searchBar == nil {
             let bar = UISearchBar()
             bar.placeholder = "Search jobs..."
@@ -129,7 +130,6 @@ class MatchesVC: UIViewController {
                 item("Pay Range:", locked: true), item("Recency:", locked: true), item("Job Modal:", locked: true)
             ])
 
-        // Use 'if let' to safely check if the storyboard button exists
         if let filterButton = filterButton {
             filterButton.menu = filterMenu
             filterButton.showsMenuAsPrimaryAction = true
@@ -159,6 +159,11 @@ class MatchesVC: UIViewController {
             containerView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -36),
             containerView.heightAnchor.constraint(equalTo: containerView.widthAnchor, multiplier: 1.1)
         ])
+        view.addSubview(emptyLabel)
+        NSLayoutConstraint.activate([
+            emptyLabel.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
+            emptyLabel.centerYAnchor.constraint(equalTo: containerView.centerYAnchor)
+        ])
     }
 
     private func layoutDeckStack() {
@@ -182,7 +187,7 @@ class MatchesVC: UIViewController {
         for (i, cardView) in cardViews.enumerated() {
             cardView.applyStackTransform(depth: cardViews.count - 1 - i)
         }
-
+        emptyLabel.isHidden = !cardsData.isEmpty
         setupTopCardGesture()
     }
 
@@ -207,6 +212,7 @@ class MatchesVC: UIViewController {
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let card = gesture.view as? CardView else { return }
         let t = gesture.translation(in: containerView)
+        let v = gesture.velocity(in: containerView)
 
         switch gesture.state {
         case .changed:
@@ -215,10 +221,11 @@ class MatchesVC: UIViewController {
             card.transform = CGAffineTransform(rotationAngle: angle)
                 .concatenating(CGAffineTransform(translationX: t.x, y: t.y))
         case .ended:
-            let threshold: CGFloat = 130
-            if t.x > threshold {
+            let distance: CGFloat = 100
+            let flick: CGFloat = 800
+            if t.x > distance || v.x > flick {
                 animateSwipeOffScreen(targetCard: card, directionRight: true)
-            } else if t.x < -threshold {
+            } else if t.x < -distance || v.x < -flick {
                 animateSwipeOffScreen(targetCard: card, directionRight: false)
             } else {
                 UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.65,
@@ -250,8 +257,22 @@ class MatchesVC: UIViewController {
 
     private func recycleCard(_ cardView: CardView) {
         guard cardViews.contains(cardView) else { return }
-        let recycled = cardsData.removeLast()
-        cardsData.insert(recycled, at: 0)
+        let swiped = cardsData.removeLast()
+
+        if store.contains(swiped) {
+        } else {
+            cardsData.insert(swiped, at: 0)   // skipped goes to the back for now
+        }
         layoutDeckStack()
     }
+    
+    private let emptyLabel: UILabel = {
+        let l = UILabel()
+        l.text = "You're all caught up!\nCheck back later for new matches."
+        l.numberOfLines = 0
+        l.textAlignment = .center
+        l.textColor = .darkGray
+        l.translatesAutoresizingMaskIntoConstraints = false
+        return l
+    }()
 }

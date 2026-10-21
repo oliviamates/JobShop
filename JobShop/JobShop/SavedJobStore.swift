@@ -141,22 +141,22 @@ extension UIViewController {
     }
 
     func navigate(to destination: AppDestination) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard file name if different
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+
+        let vc: UIViewController?
         switch destination {
-        case .settings:
-            //  This loads the design layout along with the code
-            if let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsVC") as? SettingsVC {
-                self.navigationController?.pushViewController(settingsVC, animated: true)
-            }
         case .matches:
-            if let matchesVC = storyboard.instantiateViewController(withIdentifier: "MatchesVC") as? MatchesVC {
-                self.navigationController?.pushViewController(matchesVC, animated: true)
-            }
+            if self is MatchesVC { return }   // already here
+            vc = storyboard.instantiateViewController(withIdentifier: "MatchesVC")
         case .saved:
-            if let savedVC = storyboard.instantiateViewController(withIdentifier: "SavedJobsVC") as? SavedJobsVC {
-                self.navigationController?.pushViewController(savedVC, animated: true)
-            }
+            if self is SavedJobsVC { return }
+            vc = storyboard.instantiateViewController(withIdentifier: "SavedJobsVC")
+        case .settings:
+            if self is SettingsVC { return }
+            vc = storyboard.instantiateViewController(withIdentifier: "SettingsVC")
         }
+
+        guard let vc, let nav = navigationController else { return }
+        nav.setViewControllers([vc], animated: true)
     }
 }
