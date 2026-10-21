@@ -116,7 +116,7 @@ extension UIViewController {
             UIAction(title: "Saved Jobs", image: UIImage(systemName: "heart"),
                      state: self is SavedJobsVC ? .on : .off) { [weak self] _ in self?.navigate(to: .saved) },
             UIAction(title: "Settings", image: UIImage(systemName: "gearshape"),
-                     state: self is SettingsVC ? .on : .off) { [weak self] _ in self?.navigate(to: .settings) }
+                     state: self is SettingsVC ? .on : .off) { [weak self] _ in self?.navigate(to: .settings) },
         ])
     }
 
