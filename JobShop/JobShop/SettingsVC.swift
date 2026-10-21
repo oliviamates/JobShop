@@ -11,6 +11,7 @@ import FirebaseFirestore
 
 class SettingsVC: UITableViewController {
 
+    
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!

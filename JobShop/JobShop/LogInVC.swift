@@ -44,7 +44,7 @@ class LogInVC: UIViewController {
                 self.errorMessage.text = "\(error.localizedDescription)"
             } else {
                 self.passwordField.text = ""
-                self.performSegue(withIdentifier: "LoginToSettingsIdentifier", sender: nil)
+                //self.performSegue(withIdentifier: "LoginToSettingsIdentifier", sender: nil)
             }
         }
     }

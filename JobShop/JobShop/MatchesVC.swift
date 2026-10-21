@@ -11,6 +11,7 @@ import UIKit
 
 class MatchesVC: UIViewController {
 
+    
     private var cardsData: [JobCard] = [
         JobCard(company: "Google", title: "Software Engineer", location: "San Francisco, CA",
                 description: "Software Engineers at Google need to build scalable systems, collaborate with cross-functional teams, and ship products used by billions.",
