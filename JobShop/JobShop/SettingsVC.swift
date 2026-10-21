@@ -19,7 +19,11 @@ class SettingsVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        menuButton.menu = makeNavMenu()
+        if let menuButton {
+            menuButton.menu = makeNavMenu()              // storyboard button
+        } else {
+            navigationItem.rightBarButtonItem = makeMenuBarButtonItem()   // created in code
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -31,16 +35,20 @@ class SettingsVC: UITableViewController {
     func loadProfile() {
         guard let user = Auth.auth().currentUser else { return }
         
-        db.collection("accounts").document(user.uid).getDocument {
-            (document,err) in
+        db.collection("accounts").document(user.uid).getDocument { [weak self] (document, err) in
+            // 2. Ensure self still exists before doing UI work
+            guard let self = self else { return }
+            
             if let err = err {
                 print("Error loading profile: \(err.localizedDescription)")
             } else if let data = document?.data() {
                 let first = data["firstName"] as? String ?? ""
                 let last = data["lastName"] as? String ?? ""
-                self.nameLabel.text = "\(first) \(last)"
                 let email = data["email"] as? String ?? ""
-                self.emailLabel.text = "\(email)"
+                
+                // 3. Use optional chaining (?) just in case the outlets are disconnected in storyboard
+                self.nameLabel?.text = "\(first) \(last)"
+                self.emailLabel?.text = "\(email)"
             }
         }
     }

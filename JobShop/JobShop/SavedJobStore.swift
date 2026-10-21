@@ -141,31 +141,22 @@ extension UIViewController {
     }
 
     func navigate(to destination: AppDestination) {
-        if let tab = tabBarController {
-            tab.selectedIndex = destination.rawValue
-            (tab.selectedViewController as? UINavigationController)?.popToRootViewController(animated: false)
-            return
-        }
-
-        guard let nav = navigationController else { return }
-
-        let isTarget: (UIViewController) -> Bool = { vc in
-            switch destination {
-            case .matches: return vc is MatchesVC
-            case .saved: return vc is SavedJobsVC
-            case .settings: return vc is SettingsVC
-            }
-        }
-
-        // Already in the stack? Go back to it. Otherwise push a new one.
-        if let existing = nav.viewControllers.first(where: isTarget) {
-            nav.popToViewController(existing, animated: true)
-            return
-        }
+        let storyboard = UIStoryboard(name: "Main", bundle: nil) // Change "Main" to your storyboard file name if different
+        
         switch destination {
-        case .matches: nav.pushViewController(MatchesVC(), animated: true)
-        case .saved: nav.pushViewController(SavedJobsVC(), animated: true)
-        case .settings: nav.pushViewController(SettingsVC(), animated: true)
+        case .settings:
+            //  This loads the design layout along with the code
+            if let settingsVC = storyboard.instantiateViewController(withIdentifier: "SettingsVC") as? SettingsVC {
+                self.navigationController?.pushViewController(settingsVC, animated: true)
+            }
+        case .matches:
+            if let matchesVC = storyboard.instantiateViewController(withIdentifier: "MatchesVC") as? MatchesVC {
+                self.navigationController?.pushViewController(matchesVC, animated: true)
+            }
+        case .saved:
+            if let savedVC = storyboard.instantiateViewController(withIdentifier: "SavedJobsVC") as? SavedJobsVC {
+                self.navigationController?.pushViewController(savedVC, animated: true)
+            }
         }
     }
 }
