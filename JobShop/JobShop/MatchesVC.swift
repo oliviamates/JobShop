@@ -7,7 +7,7 @@
 //  Present it with e.g. window.rootViewController = MatchesVC()
 //
 import UIKit
-
+import UserNotifications
 
 class MatchesVC: UIViewController {
 
@@ -206,6 +206,22 @@ class MatchesVC: UIViewController {
         topCard.onHeartTapped = { [weak self, weak topCard] in
             guard let self, let topCard else { return }
             self.animateSwipeOffScreen(targetCard: topCard, directionRight: true)
+                    let center = UNUserNotificationCenter.current()
+                    let content = UNMutableNotificationContent()
+                    content.title = "Job Shop Reminder"
+                    content.body = "You have ___ days to apply to ____"
+                    content.sound = .default
+                    
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+                    let uuidString = UUID().uuidString
+                    let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+                
+                    center.add(request) { error in
+                        if let error = error {
+                            print("Error scheduling notification: \(error.localizedDescription)")
+                        }
+                    }
+
         }
     }
 

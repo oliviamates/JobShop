@@ -171,6 +171,8 @@
 				DEVELOPMENT_TEAM = GF35357U49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobShop/Info.plist;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Add saved job notifications to your personal calendar";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location services in order to find jobs near you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -203,6 +205,8 @@
 				DEVELOPMENT_TEAM = GF35357U49;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobShop/Info.plist;
+				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Add saved job notifications to your personal calendar";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Enable location services in order to find jobs near you";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
