@@ -137,7 +137,7 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="6o1-47-Utb" kind="show" id="fv3-SJ-PmL"/>
+                                            <segue destination="6o1-47-Utb" kind="presentation" modalPresentationStyle="fullScreen" id="M5y-pY-SwV"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="gC2-Ig-d6w" detailTextLabel="q8V-JI-kbT" style="IBUITableViewCellStyleSubtitle" id="tay-W0-asb">
@@ -389,96 +389,152 @@
                         <outlet property="emailLabel" destination="BCE-xy-sYJ" id="6K3-p1-ySd"/>
                         <outlet property="menuButton" destination="IUe-IK-ELJ" id="4oR-5U-etQ"/>
                         <outlet property="nameLabel" destination="Uu6-Ht-REF" id="0i7-X5-enL"/>
+                        <outlet property="workingLocationsLabel" destination="hLK-AG-ECt" id="fZX-Lv-PEe"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1th-ln-LlF" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1999.2366412213739" y="916.90140845070425"/>
         </scene>
-        <!--View Controller-->
+        <!--Working LocationsVC-->
         <scene sceneID="IUW-By-VP1">
             <objects>
-                <viewController id="6o1-47-Utb" sceneMemberID="viewController">
+                <viewController id="6o1-47-Utb" customClass="WorkingLocationsVC" customModule="JobShop" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jZx-Be-QUY">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="kU9-zO-La0">
-                                <rect key="frame" x="43" y="278" width="307" height="64"/>
+                                <rect key="frame" x="43" y="176" width="307" height="64"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="6o1-47-Utb" id="sq5-C9-PxX"/>
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Working Locations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="56h-2d-yAm">
-                                <rect key="frame" x="43" y="211" width="226" height="32"/>
+                                <rect key="frame" x="43" y="109" width="226" height="32"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="26"/>
                                 <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rWb-W8-6lY">
-                                <rect key="frame" x="43" y="382" width="133" height="35"/>
-                                <color key="tintColor" name="DarkGreen"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-fd-2cH">
+                                <rect key="frame" x="43" y="240" width="307" height="299"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LocationCellIdentifier" textLabel="Kvs-tO-3WQ" style="IBUITableViewCellStyleDefault" id="LDe-7w-fKN">
+                                        <rect key="frame" x="0.0" y="50" width="307" height="51"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="LDe-7w-fKN" id="nzS-iw-nnN">
+                                            <rect key="frame" x="0.0" y="0.0" width="307" height="51"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Kvs-tO-3WQ">
+                                                    <rect key="frame" x="16" y="0.0" width="275" height="51"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1l-ut-fsC">
+                                <rect key="frame" x="227.99999999999997" y="706" width="76.666666666666657" height="35"/>
+                                <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Austin, TX" imagePadding="15">
-                                    <imageReference key="image" image="minus.circle" catalog="system" symbolScale="small"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Save">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
+                                    <color key="baseBackgroundColor" name="LightGreen"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="savePressed:" destination="0o4-Up-r2s" eventType="touchUpInside" id="nLj-fl-qdX"/>
+                                    <action selector="savePressed:" destination="T3U-zp-mTS" eventType="touchUpInside" id="tjB-r9-NqG"/>
+                                    <action selector="savePressed:" destination="6o1-47-Utb" eventType="touchUpInside" id="z3b-Yf-qYO"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6uj-Wn-UB1">
-                                <rect key="frame" x="43" y="427" width="193" height="35"/>
-                                <color key="tintColor" name="DarkGreen"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9TN-aa-A5q">
+                                <rect key="frame" x="89" y="706" width="76.666666666666686" height="35"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" systemColor="systemGray3Color"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="San Francisco, CA" imagePadding="15">
-                                    <imageReference key="image" image="minus.circle" catalog="system" symbolScale="small"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Cancel">
+                                    <color key="baseForegroundColor" systemColor="labelColor"/>
                                 </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="cancelPressed:" destination="T3U-zp-mTS" eventType="touchUpInside" id="DAR-hv-NBc"/>
+                                    <action selector="cancelPressed:" destination="6o1-47-Utb" eventType="touchUpInside" id="VEQ-qu-1iG"/>
+                                    <action selector="cancelPressed:" destination="0o4-Up-r2s" eventType="touchUpInside" id="qMB-sH-fFo"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y46-61-vgb">
-                                <rect key="frame" x="43" y="472" width="179" height="35"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GaF-rE-2r5" userLabel="error message">
+                                <rect key="frame" x="46" y="579" width="300" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="DarkGreen"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Los Angeles, CA" imagePadding="15">
-                                    <imageReference key="image" image="minus.circle" catalog="system" symbolScale="small"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QOd-4r-Cnh">
-                                <rect key="frame" x="43" y="517" width="132" height="35"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Yg-Z2-j2X" userLabel="error message">
+                                <rect key="frame" x="46" y="637" width="300" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" name="DarkGreen"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Dallas, TX" imagePadding="15">
-                                    <imageReference key="image" image="minus.circle" catalog="system" symbolScale="small"/>
-                                </buttonConfiguration>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-vN-UYf">
-                                <rect key="frame" x="43" y="562" width="144" height="35"/>
-                                <color key="tintColor" name="DarkGreen"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Seattle, WA" imagePadding="15">
-                                    <imageReference key="image" image="minus.circle" catalog="system" symbolScale="small"/>
-                                </buttonConfiguration>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemRedColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="e0R-Wt-K73"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="kU9-zO-La0" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="0h5-ip-Ote"/>
-                            <constraint firstItem="6uj-Wn-UB1" firstAttribute="top" secondItem="rWb-W8-6lY" secondAttribute="bottom" constant="10" id="7gC-68-lKs"/>
-                            <constraint firstItem="rWb-W8-6lY" firstAttribute="top" secondItem="kU9-zO-La0" secondAttribute="bottom" constant="40" id="B8o-WM-mXI"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="trailing" secondItem="Q1l-ut-fsC" secondAttribute="trailing" constant="88.333333333333371" id="Cjx-3x-hE9"/>
                             <constraint firstItem="e0R-Wt-K73" firstAttribute="trailing" secondItem="kU9-zO-La0" secondAttribute="trailing" constant="43" id="GrK-xc-zxP"/>
-                            <constraint firstItem="6uj-Wn-UB1" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="Iyq-E4-dby"/>
-                            <constraint firstItem="rWb-W8-6lY" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="NAS-3n-oRM"/>
-                            <constraint firstItem="b9A-vN-UYf" firstAttribute="top" secondItem="QOd-4r-Cnh" secondAttribute="bottom" constant="10" id="Qac-6h-4vy"/>
-                            <constraint firstItem="Y46-61-vgb" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="WCz-3l-l4r"/>
-                            <constraint firstItem="b9A-vN-UYf" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="XSr-dB-dFH"/>
-                            <constraint firstItem="e0R-Wt-K73" firstAttribute="top" secondItem="56h-2d-yAm" secondAttribute="top" constant="13" id="ZVE-ST-d1o"/>
-                            <constraint firstItem="QOd-4r-Cnh" firstAttribute="top" secondItem="Y46-61-vgb" secondAttribute="bottom" constant="10" id="og5-Ri-6mY"/>
+                            <constraint firstItem="QJP-fd-2cH" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="GwG-iB-M06"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="bottom" secondItem="QJP-fd-2cH" secondAttribute="bottom" constant="279" id="KAa-wk-6NP"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="bottom" secondItem="9TN-aa-A5q" secondAttribute="bottom" constant="77" id="Ulz-iI-6HH"/>
+                            <constraint firstItem="QJP-fd-2cH" firstAttribute="top" secondItem="kU9-zO-La0" secondAttribute="bottom" id="YfB-FZ-vEp"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="top" secondItem="56h-2d-yAm" secondAttribute="top" constant="-50" id="ZVE-ST-d1o"/>
+                            <constraint firstItem="Q1l-ut-fsC" firstAttribute="width" secondItem="9TN-aa-A5q" secondAttribute="width" id="aqW-eZ-3Ij"/>
+                            <constraint firstItem="9TN-aa-A5q" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="89" id="d5r-uV-MNC"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="trailing" secondItem="QJP-fd-2cH" secondAttribute="trailing" constant="43" id="dXH-dY-2DC"/>
+                            <constraint firstItem="e0R-Wt-K73" firstAttribute="bottom" secondItem="Q1l-ut-fsC" secondAttribute="bottom" constant="77" id="edU-ap-vog"/>
                             <constraint firstItem="kU9-zO-La0" firstAttribute="top" secondItem="56h-2d-yAm" secondAttribute="bottom" constant="35" id="wUj-Sx-npk"/>
-                            <constraint firstItem="QOd-4r-Cnh" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="xkF-8X-8JC"/>
-                            <constraint firstItem="Y46-61-vgb" firstAttribute="top" secondItem="6uj-Wn-UB1" secondAttribute="bottom" constant="10" id="zMc-2E-8I4"/>
                             <constraint firstItem="56h-2d-yAm" firstAttribute="leading" secondItem="e0R-Wt-K73" secondAttribute="leading" constant="43" id="zUY-ha-BPU"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="761-Vn-GD4"/>
+                    <connections>
+                        <outlet property="errorMessage" destination="5Yg-Z2-j2X" id="D7j-hB-8OA"/>
+                        <outlet property="searchBar" destination="kU9-zO-La0" id="asG-t2-Ca4"/>
+                        <outlet property="successMessage" destination="GaF-rE-2r5" id="AcF-fv-u75"/>
+                        <outlet property="tableView" destination="QJP-fd-2cH" id="R4K-AW-U9X"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFd-7S-Qxl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1330,7 +1386,7 @@ Find the perfect job for you.</string>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="chevron.right" catalog="system"/>
                                 <connections>
-                                    <segue destination="6o1-47-Utb" kind="show" id="n8c-n8-Pc3"/>
+                                    <segue destination="6o1-47-Utb" kind="presentation" modalPresentationStyle="fullScreen" id="n8c-n8-Pc3"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yRj-0j-qIk">
@@ -1960,8 +2016,8 @@ Find the perfect job for you.</string>
         <segue reference="5mx-Lh-bpf"/>
         <segue reference="oDD-r6-I76"/>
         <segue reference="8AQ-uY-PXb"/>
-        <segue reference="vVi-KU-8oz"/>
-        <segue reference="fv3-SJ-PmL"/>
+        <segue reference="mWL-Ke-8ve"/>
+        <segue reference="M5y-pY-SwV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>
