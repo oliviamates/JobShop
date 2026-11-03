@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
         <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
@@ -58,12 +58,20 @@
                                     <action selector="submitPressed:" destination="f7e-kq-NEH" eventType="touchUpInside" id="SdK-j5-OPd"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text=" " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uYL-80-PRm">
+                                <rect key="frame" x="90" y="474" width="207" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="AVr-xG-dQh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="fj6-9h-Fxd"/>
                     <connections>
+                        <outlet property="successMessage" destination="uYL-80-PRm" id="uPI-FQ-8eF"/>
                         <outlet property="userEmail" destination="RWL-2R-AzA" id="VnA-Tb-43r"/>
                     </connections>
                 </viewController>
@@ -2021,12 +2029,12 @@ Find the perfect job for you.</string>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>
-        <image name="camera.fill" catalog="system" width="128" height="96"/>
-        <image name="chevron.right" catalog="system" width="93" height="128"/>
-        <image name="doc.fill" catalog="system" width="111" height="128"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="69"/>
-        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="128"/>
-        <image name="minus.circle" catalog="system" width="128" height="128"/>
+        <image name="camera.fill" catalog="system" width="128" height="93"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
+        <image name="doc.fill" catalog="system" width="115" height="128"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
+        <image name="minus.circle" catalog="system" width="128" height="123"/>
         <namedColor name="DarkGreen">
             <color red="0.10588235294117647" green="0.40392156862745099" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

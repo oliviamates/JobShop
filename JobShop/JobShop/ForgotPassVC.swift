@@ -17,12 +17,12 @@ class ForgotPassVC: UIViewController {
     }
     @IBOutlet weak var userEmail: UITextField!
    
+    @IBOutlet weak var successMessage: UILabel!
     
     @IBAction func submitPressed(_ sender: Any) {
         let email: String = userEmail.text!
-        Auth.auth().sendPasswordReset(withEmail: email) { error in
-            // Handle completion
-        }
+        Auth.auth().sendPasswordReset(withEmail: email)
+        successMessage.text = "Reset Password link sent."
 
     }
     
