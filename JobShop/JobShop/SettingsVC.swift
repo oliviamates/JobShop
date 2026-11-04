@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
 
-var globalNotifChoice: Int = 0
+var globalNotifChoice: Double = 0
 
 class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -123,13 +123,13 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     
     func selectDay(_ title: String){
         if title == "1 day after saving" {
-            globalNotifChoice = 1
+            globalNotifChoice = 1 * 60
         }
         else if title == "3 days after saving"{
-            globalNotifChoice = 3
+            globalNotifChoice = 3 * 60
         }
         else {
-            globalNotifChoice = 7
+            globalNotifChoice = 7 * 60
         }
         print(globalNotifChoice)
     }

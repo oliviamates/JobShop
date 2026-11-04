@@ -209,10 +209,10 @@ class MatchesVC: UIViewController {
                     let center = UNUserNotificationCenter.current()
                     let content = UNMutableNotificationContent()
                     content.title = "Job Shop Reminder"
-                    content.body = "You have ___ days to apply to ____"
+                    content.body = "You have " + String(globalNotifChoice) + " days to apply to " + topCard.card.company
                     content.sound = .default
                     
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: globalNotifChoice, repeats: false)
                     let uuidString = UUID().uuidString
                     let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
                 
