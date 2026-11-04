@@ -10,7 +10,7 @@ import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
 
-class SettingsVC: UITableViewController {
+class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     
     @IBOutlet weak var emailLabel: UILabel!
@@ -54,6 +54,20 @@ class SettingsVC: UITableViewController {
                 self.emailLabel?.text = "\(email)"
             }
         }
+    }
+    
+    
+    @IBAction func remindersOn(_ sender: UISwitch) {
+        UNUserNotificationCenter.current().delegate = self
+        if sender.isOn{
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+                print("Permission granted: \(granted)")
+            }
+        }
+        else {
+            print("permission denied")
+        }
+        
     }
     
     func loadWorkingLocations() {
