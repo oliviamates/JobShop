@@ -10,6 +10,8 @@ import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
 
+var globalNotifChoice: Int = 0
+
 class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
     
@@ -17,6 +19,9 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var workingLocationsLabel: UILabel!
+    
+    @IBOutlet weak var dayButton: UIButton!
+    
     
     let db = Firestore.firestore()
 
@@ -28,8 +33,28 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
             navigationItem.rightBarButtonItem = makeMenuBarButtonItem()   // created in code
         }
         self.navigationItem.setHidesBackButton(true, animated: true)
+        
+        let optionOne = UIAction(title: "1 day after saving", handler: { action in
+            self.selectDay(action.title)
+        })
+
+        let optionTwo = UIAction(title: "3 days after saving", handler: { action in
+            self.selectDay(action.title)
+        })
+
+        let optionThree = UIAction(title: "7 days after saving", handler: { action in
+            self.selectDay(action.title)
+        })
+
+        let dayMenu = UIMenu(children: [optionOne, optionTwo, optionThree])
+        
+        dayButton.menu = dayMenu
+        dayButton.showsMenuAsPrimaryAction = true
+        dayButton.changesSelectionAsPrimaryAction = true
 
     }
+    
+
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -61,11 +86,11 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         UNUserNotificationCenter.current().delegate = self
         if sender.isOn{
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                print("Permission granted: \(granted)")
+                print("calendar Permission granted: \(granted)")
             }
         }
         else {
-            print("permission denied")
+            print("calendar permission denied")
         }
         
     }
@@ -93,4 +118,24 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
             }
         }
     }
+    
+    @IBOutlet weak var dayMenu: UIMenu!
+    
+    func selectDay(_ title: String){
+        if title == "1 day after saving" {
+            globalNotifChoice = 1
+        }
+        else if title == "3 days after saving"{
+            globalNotifChoice = 3
+        }
+        else {
+            globalNotifChoice = 7
+        }
+        print(globalNotifChoice)
+    }
+    
+    
+    
+    
+    
 }
