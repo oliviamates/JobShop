@@ -17,7 +17,6 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var successMessage: UILabel!
     
     let db = Firestore.firestore()
     let completer = MKLocalSearchCompleter()
@@ -39,13 +38,11 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
         completer.delegate = self
         completer.resultTypes = .address
         errorMessage.text = ""
-        successMessage.text = ""
         loadSavedLocations()
     }
     
     @IBAction func savePressed(_ sender: Any) {
         errorMessage.text = ""
-        successMessage.text = ""
         if let user = Auth.auth().currentUser {
             db.collection("accounts").document(user.uid)
                 .setData(["workingLocations": savedLocations], merge: true) { err in
@@ -53,7 +50,7 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
                         self.errorMessage.text = "\(err.localizedDescription)"
                     } else {
                         self.originalLocations = self.savedLocations
-                        self.successMessage.text = "Locations saved!"
+                        self.dismiss(animated: true)
                     }
                 }
         } else {
@@ -88,7 +85,6 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
     // Add a new working location
     func addLocation(_ name: String) {
         errorMessage.text = ""
-        successMessage.text = ""
         if savedLocations.contains(name) {
             // if location is already in list
             return
@@ -103,7 +99,6 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
     // Remove a working location
     func removeLocation(at index: Int) {
         errorMessage.text = ""
-        successMessage.text = ""
         savedLocations.remove(at: index)
         tableView.reloadData()
     }

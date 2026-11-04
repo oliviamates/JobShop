@@ -44,7 +44,7 @@ class UpdateProfileVC: UIViewController {
                 }
             }
         }
-        }
+    }
     
     @IBAction func logoutPressed(_ sender: Any) {
         do {
@@ -61,6 +61,7 @@ class UpdateProfileVC: UIViewController {
                 view.window?.makeKeyAndVisible()
             }
     }
+    
     @IBAction func savePressed(_ sender: Any) {
         self.errorMessage.text = ""
         

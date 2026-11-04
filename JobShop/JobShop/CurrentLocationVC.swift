@@ -10,7 +10,6 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var errorMessage: UILabel!
-    @IBOutlet weak var successMessage: UILabel!
 
     let db = Firestore.firestore()
     let completer = MKLocalSearchCompleter()
@@ -24,10 +23,7 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
         searchBar.delegate = self
         completer.delegate = self
         completer.resultTypes = .address
-
         errorMessage.text = ""
-        successMessage.text = ""
-
         loadSavedLocation()
     }
 
@@ -49,7 +45,6 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
     }
 
     @IBAction func savePressed(_ sender: Any) {
-        successMessage.text = ""
         errorMessage.text = ""
 
         guard let location = searchBar.text,
@@ -57,8 +52,21 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
             errorMessage.text = "Select a location first."
             return
         }
-
-        saveLocation(location)
+        
+        guard let user = Auth.auth().currentUser else {
+                errorMessage.text = "Error with saving new location!"
+                return
+            }
+        
+        db.collection("accounts").document(user.uid)
+            .setData(["currentLocation": location], merge: true) { [weak self] error in
+                guard let self = self else { return }
+                if let error = error {
+                    self.errorMessage.text = error.localizedDescription
+                } else {
+                    self.dismiss(animated: true)
+                }
+            }
     }
 
     func completerDidUpdateResults(_ completer: MKLocalSearchCompleter) {
@@ -92,8 +100,6 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-
-        successMessage.text = ""
         errorMessage.text = ""
 
         let completion = results[indexPath.row]
@@ -141,27 +147,6 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
                 self.searchBar.text = location
             }
         }
-    }
-
-    // Save selected location to Firestore
-    func saveLocation(_ name: String) {
-        successMessage.text = ""
-
-        guard let user = Auth.auth().currentUser else {
-            errorMessage.text = "Error with saving new location!"
-            return
-        }
-
-        db.collection("accounts").document(user.uid)
-            .setData(["currentLocation": name], merge: true) { [weak self] error in
-                guard let self = self else { return }
-
-                if let error = error {
-                    self.errorMessage.text = error.localizedDescription
-                } else {
-                    self.successMessage.text = "Location saved!"
-                }
-            }
     }
 }
 
