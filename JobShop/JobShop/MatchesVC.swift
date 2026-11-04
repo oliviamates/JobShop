@@ -8,9 +8,11 @@
 //
 import UIKit
 import UserNotifications
+import EventKit
+import EventKitUI
 
-class MatchesVC: UIViewController {
-
+class MatchesVC: UIViewController, EKEventEditViewDelegate {
+    let eventStore = EKEventStore()
     
     private var cardsData: [JobCard] = [
         JobCard(company: "Google", title: "Software Engineer", location: "San Francisco, CA",
@@ -190,6 +192,21 @@ class MatchesVC: UIViewController {
         emptyLabel.isHidden = !cardsData.isEmpty
         setupTopCardGesture()
     }
+    
+    func eventEditViewController(_ controller: EKEventEditViewController, didCompleteWith action: EKEventEditViewAction) {
+            controller.dismiss(animated: true, completion: nil)
+            
+            switch action {
+            case .canceled:
+                print("User cancelled adding the event.")
+            case .saved:
+                print("Event was successfully saved to the calendar!")
+            case .deleted:
+                print("Event was deleted.")
+            @unknown default:
+                break
+            }
+        }
 
     private func setupTopCardGesture() {
         guard let topCard = cardViews.last else { return }
@@ -221,9 +238,27 @@ class MatchesVC: UIViewController {
                             print("Error scheduling notification: \(error.localizedDescription)")
                         }
                     }
+            presentEventEditor(topCard.card.company)
 
         }
     }
+    
+    func presentEventEditor(_ title: String) {
+        let editVC = EKEventEditViewController()
+        editVC.eventStore = self.eventStore
+        editVC.editViewDelegate = self
+        
+        let event = EKEvent(eventStore: self.eventStore)
+        event.title = "Apply to " + title
+        event.startDate = Date()
+        event.endDate = Date().addingTimeInterval(globalNotifChoice)
+        event.isAllDay = true
+        event.notes = "Log in to JobShop to continue your application!"
+        
+        editVC.event = event
+        self.present(editVC, animated: true, completion: nil)
+    }
+
 
     @objc private func handlePanGesture(_ gesture: UIPanGestureRecognizer) {
         guard let card = gesture.view as? CardView else { return }

@@ -10,7 +10,9 @@ import FirebaseAuth
 import FirebaseFirestore
 import UserNotifications
 
-var globalNotifChoice: Double = 0
+
+var globalNotifChoice: Double = 86400
+var globalCal: Bool = false
 
 class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -63,6 +65,15 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         loadWorkingLocations()
     }
     
+    @IBAction func requestPerm(_ sender: Any) {
+        UNUserNotificationCenter.current().delegate = self
+            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+                print("calendar Permission granted: \(granted)")
+            
+        }
+ 
+    }
+    
     func loadProfile() {
         guard let user = Auth.auth().currentUser else { return }
         
@@ -83,15 +94,9 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     
     
     @IBAction func remindersOn(_ sender: UISwitch) {
-        UNUserNotificationCenter.current().delegate = self
         if sender.isOn{
-            UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                print("calendar Permission granted: \(granted)")
-            }
-        }
-        else {
-            print("calendar permission denied")
-        }
+                globalCal = true
+            } 
         
     }
     
@@ -123,13 +128,13 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     
     func selectDay(_ title: String){
         if title == "1 day after saving" {
-            globalNotifChoice = 1 * 60
+            globalNotifChoice = 1 * 86400
         }
         else if title == "3 days after saving"{
-            globalNotifChoice = 3 * 60
+            globalNotifChoice = 3 * 86400
         }
         else {
-            globalNotifChoice = 7 * 60
+            globalNotifChoice = 7 * 86400
         }
         print(globalNotifChoice)
     }
