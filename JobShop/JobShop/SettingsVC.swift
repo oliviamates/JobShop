@@ -23,6 +23,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var workingLocationsLabel: UILabel!
     @IBOutlet weak var industriesLabel: UILabel!
     @IBOutlet weak var jobTypeLabel: UILabel!
+    @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var dayButton: UIButton!
     
     
@@ -54,11 +55,8 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         dayButton.menu = dayMenu
         dayButton.showsMenuAsPrimaryAction = true
         dayButton.changesSelectionAsPrimaryAction = true
-
     }
     
-
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
@@ -66,6 +64,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         loadWorkingLocations()
         loadIndustries()
         loadJobTypes()
+        loadSkills()
     }
     
     @IBAction func requestPerm(_ sender: Any) {
@@ -167,6 +166,29 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
                 } else {
                     let remaining = jobTypes.count - 1
                     self.jobTypeLabel?.text = "\(jobTypes[0]) + \(remaining) more"
+                }
+            }
+        }
+    }
+    
+    func loadSkills() {
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).getDocument { [weak self] (document, err) in
+            guard let self = self else { return }
+
+            if let err = err {
+                print("\(err.localizedDescription)")
+            } else if let data = document?.data() {
+                let skills = data["skills"] as? [String] ?? []
+                
+                if skills.isEmpty {
+                    self.skillsLabel?.text = "No skills added"
+                } else if skills.count == 1 {
+                    self.skillsLabel?.text = skills[0]
+                } else {
+                    let remaining = skills.count - 1
+                    self.skillsLabel?.text = "\(skills[0]) + \(remaining) more"
                 }
             }
         }
