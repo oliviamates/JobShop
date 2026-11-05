@@ -22,7 +22,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var workingLocationsLabel: UILabel!
     @IBOutlet weak var industriesLabel: UILabel!
-    
+    @IBOutlet weak var jobTypeLabel: UILabel!
     @IBOutlet weak var dayButton: UIButton!
     
     
@@ -65,6 +65,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         loadProfile()
         loadWorkingLocations()
         loadIndustries()
+        loadJobTypes()
     }
     
     @IBAction func requestPerm(_ sender: Any) {
@@ -143,6 +144,29 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
                 } else {
                     let remaining = industries.count - 1
                     self.industriesLabel?.text = "\(industries[0]) + \(remaining) more"
+                }
+            }
+        }
+    }
+    
+    func loadJobTypes() {
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).getDocument { [weak self] (document, err) in
+            guard let self = self else { return }
+
+            if let err = err {
+                print("\(err.localizedDescription)")
+            } else if let data = document?.data() {
+                let jobTypes = data["jobTypes"] as? [String] ?? []
+                
+                if jobTypes.isEmpty {
+                    self.jobTypeLabel?.text = "No job types added"
+                } else if jobTypes.count == 1 {
+                    self.jobTypeLabel?.text = jobTypes[0]
+                } else {
+                    let remaining = jobTypes.count - 1
+                    self.jobTypeLabel?.text = "\(jobTypes[0]) + \(remaining) more"
                 }
             }
         }
