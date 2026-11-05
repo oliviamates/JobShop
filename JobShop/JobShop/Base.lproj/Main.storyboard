@@ -361,18 +361,18 @@
                                         <rect key="frame" x="20" y="758" width="353" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="suo-7N-THh" id="48j-AL-xM2">
-                                            <rect key="frame" x="0.0" y="0.0" width="322.66666666666669" height="59"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="334.66666666666669" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="My Skills" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cBG-tv-wXs">
-                                                    <rect key="frame" x="16" y="7.9999999999999982" width="70.333333333333329" height="20.333333333333332"/>
+                                                    <rect key="frame" x="8" y="7.9999999999999982" width="70.333333333333329" height="20.333333333333332"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" ambiguous="YES" insetsLayoutMarginsFromSafeArea="NO" text="Software Development • iOS + 2 more... " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="mDw-1w-9fg">
-                                                    <rect key="frame" x="16" y="31.333333333333329" width="276.66666666666669" height="18"/>
+                                                    <rect key="frame" x="8" y="31.333333333333329" width="276.66666666666669" height="18"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <nil key="textColor"/>
@@ -890,8 +890,8 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload a file from your device. Accepted file types: PDF, DOC, and DOCX." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L8-lE-h23">
-                                <rect key="frame" x="43" y="282.33333333333331" width="300" height="61"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Upload a PDF file from your device." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5L8-lE-h23">
+                                <rect key="frame" x="43" y="282.33333333333331" width="300" height="20.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Cbt-d8-Ghh"/>
                                 </constraints>
@@ -900,7 +900,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use your camera to a scan a physical copy of your resume. Make sure it's easy to read and in a well-lit environment." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b8Q-kG-Wmj">
-                                <rect key="frame" x="43" y="438.33333333333331" width="300" height="81.333333333333314"/>
+                                <rect key="frame" x="43" y="397.66666666666669" width="300" height="81.333333333333314"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="1VL-XB-jJ3"/>
                                 </constraints>
@@ -933,7 +933,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="25Y-Qb-GEw">
-                                <rect key="frame" x="43" y="393.33333333333331" width="148" height="35"/>
+                                <rect key="frame" x="43" y="352.66666666666669" width="148" height="35"/>
                                 <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <buttonConfiguration key="configuration" style="filled" image="camera.fill" catalog="system" title="Scan Copy" imagePadding="10">
@@ -1003,7 +1003,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last Updated: September 30, 2026" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a6J-ag-r7V">
-                                <rect key="frame" x="56" y="586.33333333333337" width="281" height="21"/>
+                                <rect key="frame" x="56" y="545.66666666666663" width="281" height="21"/>
                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>

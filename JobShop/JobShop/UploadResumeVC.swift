@@ -7,13 +7,15 @@
 
 import UIKit
 import UniformTypeIdentifiers
+import PDFKit
 
 
 class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
+    var extractedResumeText: String = ""
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
     
@@ -31,7 +33,26 @@ class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerC
         }
     
     func uploadFile(fileURL: URL) {
-        print("placeholder")
+        // keeping extractPDFText as separate function so we can add support for docx later on!
+        extractPDFText(url: fileURL)
+    }
+    
+    // extract text from pdf files with text
+    func extractPDFText(url: URL) {
+        if let pdfDocument = PDFDocument(url: url) {
+            var fullText = ""
+            for pageIndex in 0..<pdfDocument.pageCount {
+                if let page = pdfDocument.page(at: pageIndex) {
+                    if let pageText = page.string {
+                        fullText += pageText + "\n"
+                    }
+                }
+            }
+            extractedResumeText = fullText
+            print(extractedResumeText)
+        } else {
+            print("error opening PDF")
+        }
     }
     
     @IBAction func openCamera(_ sender: Any) {
