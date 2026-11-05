@@ -21,6 +21,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var menuButton: UIBarButtonItem!
     @IBOutlet weak var workingLocationsLabel: UILabel!
+    @IBOutlet weak var industriesLabel: UILabel!
     
     @IBOutlet weak var dayButton: UIButton!
     
@@ -63,6 +64,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         navigationController?.setNavigationBarHidden(false, animated: animated)
         loadProfile()
         loadWorkingLocations()
+        loadIndustries()
     }
     
     @IBAction func requestPerm(_ sender: Any) {
@@ -113,12 +115,34 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
 
                 if locations.isEmpty {
                     self.workingLocationsLabel?.text = "No locations added"
-                } else if locations.count <= 2 {
-                    self.workingLocationsLabel?.text = locations.joined(separator: " · ")
+                } else if locations.count == 1 {
+                    self.workingLocationsLabel?.text = locations[0]
                 } else {
-                    let firstTwo = locations.prefix(2).joined(separator: " · ")
-                    let remaining = locations.count - 2
-                    self.workingLocationsLabel?.text = "\(firstTwo) + \(remaining) more..."
+                    let remaining = locations.count - 1
+                    self.workingLocationsLabel?.text = "\(locations[0]) + \(remaining) more"
+                }
+            }
+        }
+    }
+    
+    func loadIndustries() {
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).getDocument { [weak self] (document, err) in
+            guard let self = self else { return }
+
+            if let err = err {
+                print("\(err.localizedDescription)")
+            } else if let data = document?.data() {
+                let industries = data["industries"] as? [String] ?? []
+
+                if industries.isEmpty {
+                    self.industriesLabel?.text = "No industries added"
+                } else if industries.count == 1 {
+                    self.industriesLabel?.text = industries[0]
+                } else {
+                    let remaining = industries.count - 1
+                    self.industriesLabel?.text = "\(industries[0]) + \(remaining) more"
                 }
             }
         }
