@@ -115,6 +115,10 @@ class ResumeSkills {
         Return only skills from the AVAILABLE SKILLS list.
         """
 
+        print("Resume characters: \(resumeText.count)")
+        print("Available skills: \(skills.count)")
+        print("Total prompt characters: \(prompt.count)")
+        
         // send prompt to Gemini
         let response = try await model.generateContent(prompt)
         guard let responseText = response.text,
