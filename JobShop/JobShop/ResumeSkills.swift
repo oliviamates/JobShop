@@ -29,7 +29,7 @@ class ResumeSkills {
 
         // initialize model
         model = ai.generativeModel(
-            modelName: "gemini-3.8-flash",
+            modelName: "gemini-3.5-flash-lite",
             generationConfig: GenerationConfig(
                 responseMIMEType: "application/json",
                 responseSchema: jsonSchema
