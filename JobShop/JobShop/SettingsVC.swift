@@ -208,9 +208,4 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         }
         print(globalNotifChoice)
     }
-    
-    
-    
-    
-    
 }
