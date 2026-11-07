@@ -63,7 +63,8 @@ class CreateAccountVC: UIViewController {
                     "firstName": self.firstNameField.text!,
                     "lastName": self.lastNameField.text!,
                     "email": email,
-                    "birthday": Timestamp(date: self.birthdayField.date)
+                    "birthday": Timestamp(date: self.birthdayField.date),
+                    "skills": [String]()
                 ]) { err in
                     if let err = err {
                         self.errorMessage.text = "\(err.localizedDescription)"
