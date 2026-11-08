@@ -8,17 +8,26 @@
 import UIKit
 import UniformTypeIdentifiers
 import PDFKit
+import SwiftTextDOCX
 
 
 class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    @IBOutlet weak var statusMessage: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        statusMessage.text = ""
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        statusMessage.text = ""
     }
     
     @IBAction func uploadButtonTapped(_ sender: Any) {
-        let supportedTypes: [UTType] = [.pdf]
+        let supportedTypes: [UTType] = [.pdf, UTType(filenameExtension: "docx")!]
             let picker = UIDocumentPickerViewController(forOpeningContentTypes: supportedTypes, asCopy: true)
             picker.delegate = self
             picker.allowsMultipleSelection = false
@@ -31,8 +40,16 @@ class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerC
         }
     
     func uploadFile(fileURL: URL) {
-        // keeping extractPDFText as separate function so we can add support for docx later on!
-        extractPDFText(url: fileURL)
+        let fileExtension = fileURL.pathExtension.lowercased()
+        // go through different text extraction process depending on file type
+        if fileExtension == "pdf" {
+            extractPDFText(url: fileURL)
+        } else if fileExtension == "docx" {
+            extractDOCXText(url: fileURL)
+        } else {
+            statusMessage.text = "Unsupported file type."
+            statusMessage.textColor = .systemRed
+        }
     }
     
     // extract text from pdf files with text
@@ -48,18 +65,37 @@ class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerC
             }
             
             if extractedText.isEmpty {
-                print("No text could be extracted from this PDF.")
+                statusMessage.text = "No text could be found in this PDF."
+                statusMessage.textColor = .systemRed
                 return
             }
-            
-            print(extractedText)
             skillsFromResumeText(resumeText: extractedText)
         } else {
-            print("error opening PDF")
+            statusMessage.text = "Error opening PDF."
+            statusMessage.textColor = .systemRed
+        }
+    }
+    
+    // extract text from docx files
+    func extractDOCXText(url: URL) {
+        if let docxDocument = try? DocxFile(url: url) {
+                let extractedText = docxDocument.plainText()
+                if extractedText.isEmpty {
+                    statusMessage.text = "No text could be found in this docx file."
+                    statusMessage.textColor = .systemRed
+                    return
+                }
+                skillsFromResumeText(resumeText: extractedText)
+            } else {
+                statusMessage.text = "Error opening docx file."
+                statusMessage.textColor = .systemRed
         }
     }
     
     func skillsFromResumeText(resumeText: String) {
+        statusMessage.text = "Extracting skills from your resume..."
+        statusMessage.textColor = .darkGreen
+        
         let resumeSkills = ResumeSkills()
         Task {
             do {
@@ -67,7 +103,8 @@ class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerC
                 print("Matched skills: \(skills)")
                 performSegue(withIdentifier: "ResumeToSkills", sender: skills)
             } catch {
-                print("resume matching FAILED")
+                statusMessage.text = "Error extracting skills from resume! Please try again."
+                statusMessage.textColor = .systemRed
             }
         }
     }

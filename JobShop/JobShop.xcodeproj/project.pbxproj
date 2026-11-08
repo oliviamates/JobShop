@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8679CD22309FF08F00275BB5 /* SwiftTextDOCX in Frameworks */ = {isa = PBXBuildFile; productRef = 8679CD21309FF08F00275BB5 /* SwiftTextDOCX */; };
 		86BEB4C4309D4DF500908B4B /* FirebaseAILogic in Frameworks */ = {isa = PBXBuildFile; productRef = 86BEB4C3309D4DF500908B4B /* FirebaseAILogic */; };
 		86BEB4C6309D56DF00908B4B /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 86BEB4C5309D56DF00908B4B /* FirebaseAppCheck */; };
 		86E4F34730871A3F006B04C4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 86E4F34630871A3F006B04C4 /* FirebaseAuth */; };
@@ -47,6 +48,7 @@
 				86BEB4C4309D4DF500908B4B /* FirebaseAILogic in Frameworks */,
 				86E4F34730871A3F006B04C4 /* FirebaseAuth in Frameworks */,
 				86E4F34B30871A6C006B04C4 /* FirebaseCore in Frameworks */,
+				8679CD22309FF08F00275BB5 /* SwiftTextDOCX in Frameworks */,
 				86BEB4C6309D56DF00908B4B /* FirebaseAppCheck in Frameworks */,
 				86E4F34930871A4E006B04C4 /* FirebaseFirestore in Frameworks */,
 			);
@@ -104,6 +106,7 @@
 				86E4F34A30871A6C006B04C4 /* FirebaseCore */,
 				86BEB4C3309D4DF500908B4B /* FirebaseAILogic */,
 				86BEB4C5309D56DF00908B4B /* FirebaseAppCheck */,
+				8679CD21309FF08F00275BB5 /* SwiftTextDOCX */,
 			);
 			productName = JobShop;
 			productReference = 9DDF5EB8307D4334002557B1 /* JobShop.app */;
@@ -135,6 +138,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				863D46AE3086C6C6008B90BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				8679CD20309FF08F00275BB5 /* XCRemoteSwiftPackageReference "SwiftText" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 9DDF5EB9307D4334002557B1 /* Products */;
@@ -174,7 +178,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GF35357U49;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobShop/Info.plist;
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Add saved job notifications to your personal calendar";
@@ -208,7 +212,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GF35357U49;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = JobShop/Info.plist;
 				INFOPLIST_KEY_NSCalendarsFullAccessUsageDescription = "Add saved job notifications to your personal calendar";
@@ -388,9 +392,22 @@
 				minimumVersion = 13.0.1;
 			};
 		};
+		8679CD20309FF08F00275BB5 /* XCRemoteSwiftPackageReference "SwiftText" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Cocoanetics/SwiftText.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.5.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8679CD21309FF08F00275BB5 /* SwiftTextDOCX */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8679CD20309FF08F00275BB5 /* XCRemoteSwiftPackageReference "SwiftText" */;
+			productName = SwiftTextDOCX;
+		};
 		86BEB4C3309D4DF500908B4B /* FirebaseAILogic */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 863D46AE3086C6C6008B90BA /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
