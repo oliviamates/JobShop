@@ -3,6 +3,7 @@ import UIKit
 import MapKit
 import FirebaseAuth
 import FirebaseFirestore
+import CoreLocation
 
 class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataSource,
                          UISearchBarDelegate, MKLocalSearchCompleterDelegate {
@@ -14,6 +15,7 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
     let db = Firestore.firestore()
     let completer = MKLocalSearchCompleter()
     var results = [MKLocalSearchCompletion]()
+    let locationManager = CLLocationManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
