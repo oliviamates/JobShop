@@ -19,8 +19,13 @@ class LogInVC: UIViewController {
         self.emailField.text = ""
         self.passwordField.text = ""
         self.errorMessage.text = ""
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
+    @IBAction func dismissKeyboard() {
+        view.endEditing(true)
+    }
     @IBAction func loginDone(_ sender: Any) {
         self.errorMessage.text = ""
 
