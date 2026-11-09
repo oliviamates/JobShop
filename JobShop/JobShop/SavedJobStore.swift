@@ -71,7 +71,6 @@ class SavedJobsStore {
         return jobs.first { Self.key(for: $0) == key }
     }
 
-    /// Sample data is no longer used. Safe to delete this stub once nothing calls it.
     func loadSamples() {}
 
     private func notify() {
@@ -112,8 +111,6 @@ class SavedJobsStore {
 
     // MARK: Encoding
 
-    /// Stable key so the same job maps to the same document on every launch.
-    /// (JobCard.id is likely regenerated each launch, so it isn't used for Firestore.)
     private static func key(for job: JobCard) -> String {
         "\(job.company)_\(job.title)".lowercased()
             .components(separatedBy: CharacterSet.alphanumerics.inverted)
