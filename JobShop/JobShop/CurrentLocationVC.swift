@@ -77,7 +77,7 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
         }
         tableView.reloadData()
     }
-
+    
     func completer(_ completer: MKLocalSearchCompleter, didFailWithError error: Error) {
         print("Search error: \(error.localizedDescription)")
     }
@@ -103,32 +103,34 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         errorMessage.text = ""
-
-        let completion = results[indexPath.row]
-        let request = MKLocalSearch.Request(completion: completion)
-
-        MKLocalSearch(request: request).start { response, error in
-            if let error = error {
-                self.errorMessage.text = error.localizedDescription
-                return
+        
+   
+            let completion = results[indexPath.row]
+            let request = MKLocalSearch.Request(completion: completion)
+            
+            MKLocalSearch(request: request).start { response, error in
+                if let error = error {
+                    self.errorMessage.text = error.localizedDescription
+                    return
+                }
+                
+                guard let placemark = response?.mapItems.first?.placemark else {
+                    self.errorMessage.text = "Unable to retrieve location."
+                    return
+                }
+                
+                let city = placemark.locality ?? completion.title
+                let state = placemark.administrativeArea ?? ""
+                let location = state.isEmpty ? city : "\(city), \(state)"
+                
+                // Show selected location in search bar
+                self.searchBar.text = location
+                self.errorMessage.text = ""
+                self.results = []
+                self.tableView.reloadData()
+                self.searchBar.resignFirstResponder()
             }
-
-            guard let placemark = response?.mapItems.first?.placemark else {
-                self.errorMessage.text = "Unable to retrieve location."
-                return
-            }
-
-            let city = placemark.locality ?? completion.title
-            let state = placemark.administrativeArea ?? ""
-            let location = state.isEmpty ? city : "\(city), \(state)"
-
-            // Show selected location in search bar
-            self.searchBar.text = location
-            self.errorMessage.text = ""
-            self.results = []
-            self.tableView.reloadData()
-            self.searchBar.resignFirstResponder()
-        }
+        
     }
 
     // Load previously saved location when user opens the screen

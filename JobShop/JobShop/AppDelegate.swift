@@ -9,19 +9,66 @@ import UIKit
 import FirebaseCore
 import UserNotifications
 import FirebaseAppCheck
+import CoreLocation
+import MapKit
 
+var currCity:String = ""
+var currState:String = ""
 @main
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate {
+
+    let locationManager = CLLocationManager()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         let providerFactory = AppCheckDebugProviderFactory()
         AppCheck.setAppCheckProviderFactory(providerFactory)
         FirebaseApp.configure()
+        locationManager.delegate = self
+        checkLocationAuthorization()
+        locationManager.startUpdatingLocation()
+
     
         return true
     }
+    func checkLocationAuthorization() {
+            switch locationManager.authorizationStatus {
+            case .notDetermined:
+                locationManager.requestWhenInUseAuthorization()
+            case .restricted, .denied:
+                print("Location access denied. Please enable it in Settings.")
+            case .authorizedWhenInUse, .authorizedAlways:
+                locationManager.requestLocation()
+            @unknown default:
+                break
+            }
+        }
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        
+        Task {
+            guard let request = MKReverseGeocodingRequest(location: location) else { return }
+            
+            do {
+                let mapItems = try await request.mapItems
+                
+                if let firstItem = mapItems.first {
+                    if let city = firstItem.addressRepresentations?.cityName {
+                        print("Current City via MapKit: \(city)")
+                        currCity = city
+                        currState = (firstItem.addressRepresentations?.regionName)!
+              
+                        await MainActor.run {
+                        }
+                    }
+                }
+            } catch {
+                print("MapKit reverse geocoding failed: \(error.localizedDescription)")
+            }
+        }
+    }
+
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
             let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }
