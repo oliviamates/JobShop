@@ -1,4 +1,4 @@
-//
+////
 //  SavedJobStore.swift
 //  JobShop
 //
@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseAuth
+import FirebaseFirestore
 
 extension Notification.Name {
     static let savedJobsChanged = Notification.Name("savedJobsChanged")
@@ -15,69 +17,143 @@ extension Notification.Name {
 
 class SavedJobsStore {
     static let shared = SavedJobsStore()
-    private init() {}
 
     private(set) var jobs: [JobCard] = []
 
+    private let db = Firestore.firestore()
+    private var listener: ListenerRegistration?
+    private var authHandle: AuthStateDidChangeListenerHandle?
+
+    private init() {
+        // Restart the listener whenever the account changes (login / logout)
+        authHandle = Auth.auth().addStateDidChangeListener { [weak self] _, user in
+            self?.startListening(uid: user?.uid)
+        }
+    }
+
+    // MARK: Public API (unchanged signatures)
+
     func contains(_ job: JobCard) -> Bool {
-        jobs.contains { $0.id == job.id }
+        let key = Self.key(for: job)
+        return jobs.contains { Self.key(for: $0) == key }
     }
 
     func save(_ job: JobCard) {
         guard !contains(job) else { return }
-        jobs.insert(job, at: 0)
+        jobs.insert(job, at: 0)                       // optimistic local update
         notify()
+        collection()?.document(Self.key(for: job)).setData(Self.encode(job)) { error in
+            if let error { print("Save failed: \(error.localizedDescription)") }
+        }
     }
 
     func remove(_ job: JobCard) {
-        jobs.removeAll { $0.id == job.id }
+        let key = Self.key(for: job)
+        jobs.removeAll { Self.key(for: $0) == key }
         notify()
+        collection()?.document(key).delete { error in
+            if let error { print("Delete failed: \(error.localizedDescription)") }
+        }
     }
 
     func updateStatus(_ status: ApplicationStatus, for job: JobCard) {
-        guard let i = jobs.firstIndex(where: { $0.id == job.id }) else { return }
+        let key = Self.key(for: job)
+        guard let i = jobs.firstIndex(where: { Self.key(for: $0) == key }) else { return }
         jobs[i].status = status
         notify()
+        collection()?.document(key).updateData(["status": status.rawValue]) { error in
+            if let error { print("Status update failed: \(error.localizedDescription)") }
+        }
     }
 
     func savedVersion(of job: JobCard) -> JobCard? {
-        jobs.first { $0.id == job.id }
+        let key = Self.key(for: job)
+        return jobs.first { Self.key(for: $0) == key }
     }
+
+    /// Sample data is no longer used. Safe to delete this stub once nothing calls it.
+    func loadSamples() {}
 
     private func notify() {
-        NotificationCenter.default.post(name: .savedJobsChanged, object: nil)
+        if Thread.isMainThread {
+            NotificationCenter.default.post(name: .savedJobsChanged, object: nil)
+        } else {
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: .savedJobsChanged, object: nil)
+            }
+        }
     }
 
-    func loadSamples() {
-        guard jobs.isEmpty else { return }
-        jobs = [
-            JobCard(company: "Google", title: "Software Engineer", location: "San Francisco, CA",
-                    description: "Build scalable systems used by billions.", matchPercent: 30,
-                    keywords: ["Java", "Python", "JavaScript", "iOS Development"], extraKeywords: 10,
-                    salary: "$109000 - $150000 annually", dateApplied: "September 15th, 2026",
-                    status: .notApplied, applyURL: URL(string: "https://careers.google.com")),
-            JobCard(company: "AWS", title: "Data Architect", location: "Seattle, WA",
-                    description: "Design data platforms on AWS.", matchPercent: 50,
-                    keywords: ["SQL", "Python", "AWS", "Spark"], extraKeywords: 6,
-                    salary: "$125000 - $170000 annually", dateApplied: "September 20th, 2026",
-                    status: .interviewed, applyURL: URL(string: "https://www.amazon.jobs")),
-            JobCard(company: "VISA", title: "Software Engineer", location: "Austin, TX",
-                    description: "Build payment infrastructure.", matchPercent: 20,
-                    keywords: ["Java", "Spring", "SQL", "Kafka"], extraKeywords: 9,
-                    salary: "$105000 - $145000 annually", dateApplied: "September 27th, 2026",
-                    status: .applied, applyURL: URL(string: "https://usa.visa.com/careers")),
-            JobCard(company: "Roblox", title: "Data Analyst", location: "Chicago, IL",
-                    description: "Turn player data into insights.", matchPercent: 85,
-                    keywords: ["SQL", "Python", "Tableau", "Statistics"], extraKeywords: 4,
-                    salary: "$95000 - $130000 annually", dateApplied: "September 27th, 2026",
-                    status: .offer, applyURL: URL(string: "https://careers.roblox.com")),
-            JobCard(company: "Jane Street", title: "Quantum Analyst", location: "New York City, NY",
-                    description: "Research and trading analytics.", matchPercent: 10,
-                    keywords: ["OCaml", "Python", "Math"], extraKeywords: 5,
-                    salary: "$150000 - $220000 annually", dateApplied: "October 2nd, 2026",
-                    status: .notApplied, applyURL: URL(string: "https://www.janestreet.com/join-jane-street"))
-        ]
+    // MARK: Firestore
+
+    private func collection() -> CollectionReference? {
+        guard let uid = Auth.auth().currentUser?.uid else { return nil }
+        return db.collection("accounts").document(uid).collection("savedJobs")
+    }
+
+    private func startListening(uid: String?) {
+        listener?.remove()
+        listener = nil
+        jobs = []
         notify()
+        guard let uid else { return }
+
+        listener = db.collection("accounts").document(uid).collection("savedJobs")
+            .order(by: "savedAt", descending: true)
+            .addSnapshotListener { [weak self] snapshot, error in
+                guard let self, let snapshot else {
+                    if let error { print("Listen failed: \(error.localizedDescription)") }
+                    return
+                }
+                self.jobs = snapshot.documents.compactMap { Self.decode($0.data()) }
+                self.notify()
+            }
+    }
+
+    // MARK: Encoding
+
+    /// Stable key so the same job maps to the same document on every launch.
+    /// (JobCard.id is likely regenerated each launch, so it isn't used for Firestore.)
+    private static func key(for job: JobCard) -> String {
+        "\(job.company)_\(job.title)".lowercased()
+            .components(separatedBy: CharacterSet.alphanumerics.inverted)
+            .filter { !$0.isEmpty }
+            .joined(separator: "_")
+    }
+
+    private static func encode(_ j: JobCard) -> [String: Any] {
+        [
+            "company": j.company,
+            "title": j.title,
+            "location": j.location,
+            "description": j.description,
+            "matchPercent": j.matchPercent,
+            "keywords": j.keywords,
+            "extraKeywords": j.extraKeywords,
+            "salary": j.salary,
+            "dateApplied": j.dateApplied,
+            "status": j.status.rawValue,
+            "applyURL": j.applyURL?.absoluteString ?? "",
+            "savedAt": FieldValue.serverTimestamp()
+        ]
+    }
+
+    private static func decode(_ d: [String: Any]) -> JobCard? {
+        guard let company = d["company"] as? String,
+              let title = d["title"] as? String else { return nil }
+        let status = (d["status"] as? String).flatMap(ApplicationStatus.init(rawValue:)) ?? .notApplied
+        return JobCard(
+            company: company,
+            title: title,
+            location: d["location"] as? String ?? "",
+            description: d["description"] as? String ?? "",
+            matchPercent: d["matchPercent"] as? Int ?? 0,
+            keywords: d["keywords"] as? [String] ?? [],
+            extraKeywords: d["extraKeywords"] as? Int ?? 0,
+            salary: d["salary"] as? String ?? "",
+            dateApplied: d["dateApplied"] as? String ?? "",
+            status: status,
+            applyURL: URL(string: d["applyURL"] as? String ?? ""))
     }
 }
 

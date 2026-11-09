@@ -10,6 +10,7 @@ import UIKit
 import UserNotifications
 import EventKit
 import EventKitUI
+import FirebaseFirestore
 
 class MatchesVC: UIViewController, EKEventEditViewDelegate {
     let eventStore = EKEventStore()
@@ -42,6 +43,11 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
                 applyURL: URL(string: "https://www.lifeatspotify.com"))
     ]
 
+    /// Master list of every match. Never mutated after viewDidLoad.
+    private var allCards: [JobCard] = []
+    /// True while a swipe-off animation is running, so Firestore updates don't rebuild the deck mid-animation.
+    private var isSwiping = false
+
     private let store = SavedJobsStore.shared
     private var cardViews: [CardView] = []
     private let containerView = UIView()
@@ -55,6 +61,8 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        allCards = cardsData
+        
         view.backgroundColor = Theme.background
         if let menuButton {
                 menuButton.menu = makeNavMenu()              // storyboard button
@@ -64,17 +72,37 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         ensureTitleAndSearchBarExist()
         setupFilterMenu()
         setupContainer()
-        cardsData.removeAll { store.contains($0) }
-        layoutDeckStack()
+        
+        // Saved jobs load asynchronously from Firestore, so rebuild the deck whenever they change.
+        NotificationCenter.default.addObserver(self, selector: #selector(savedJobsChanged),
+                                               name: .savedJobsChanged, object: nil)
+        refreshDeck()
     }
 
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+        refreshDeck()
+    }
+
+    // MARK: Deck refresh
+
+    @objc private func savedJobsChanged() {
+        guard !isSwiping else { return }
+        refreshDeck()
+    }
+
+    /// Removes saved jobs from the deck, and brings back any unsaved job that's missing
+    /// (e.g. one that was removed from the Saved screen).
+    private func refreshDeck() {
         cardsData.removeAll { store.contains($0) }
+        for card in allCards where !store.contains(card)
+            && !cardsData.contains(where: { $0.company == card.company && $0.title == card.title }) {
+            cardsData.insert(card, at: 0)
+        }
         layoutDeckStack()
         // Refresh heart state in case something was (un)saved on another screen.
-        navigationController?.setNavigationBarHidden(false, animated: animated)
         for cardView in cardViews { cardView.setLiked(store.contains(cardView.card)) }
     }
 
@@ -290,11 +318,12 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     }
 
     private func animateSwipeOffScreen(targetCard: CardView, directionRight: Bool) {
+        isSwiping = true
         targetCard.isUserInteractionEnabled = false
 
         if directionRight {
             targetCard.setLiked(true)
-            store.save(targetCard.card)
+            store.save(targetCard.card)   // writes to Firestore
         }
 
         let exitX = directionRight ? view.frame.width + 150 : -view.frame.width - 150
@@ -307,11 +336,14 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     }
 
     private func recycleCard(_ cardView: CardView) {
-        guard cardViews.contains(cardView) else { return }
+        isSwiping = false
+        guard cardViews.contains(cardView), !cardsData.isEmpty else {
+            refreshDeck()
+            return
+        }
         let swiped = cardsData.removeLast()
 
-        if store.contains(swiped) {
-        } else {
+        if !store.contains(swiped) {
             cardsData.insert(swiped, at: 0)   // skipped goes to the back for now
         }
         layoutDeckStack()

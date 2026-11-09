@@ -20,7 +20,6 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = Theme.background
-        let menu = makeMenuBarButtonItem()
         navigationItem.setHidesBackButton(true, animated: true)
 
         navigationItem.rightBarButtonItem = makeMenuBarButtonItem()
@@ -28,10 +27,18 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let searchContainer = setupSearchRow(below: titleJob)
         setupTable(below: searchContainer)
         setupEmptyLabel()
+
+        // Saved jobs load asynchronously from Firestore, so reload whenever they change.
+        NotificationCenter.default.addObserver(self, selector: #selector(storeChanged),
+                                               name: .savedJobsChanged, object: nil)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        reload()
+    }
+
+    @objc private func storeChanged() {
         reload()
     }
 
@@ -179,10 +186,7 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         let remove = UIContextualAction(style: .destructive, title: "Remove") { [weak self] _, _, done in
             guard let self else { return }
             let job = self.visibleJobs[indexPath.row]
-            self.store.remove(job)
-            self.visibleJobs.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.updateEmptyState()
+            self.store.remove(job)   // deletes from Firestore; also posts .savedJobsChanged -> reload()
             done(true)
         }
         return UISwipeActionsConfiguration(actions: [remove])
