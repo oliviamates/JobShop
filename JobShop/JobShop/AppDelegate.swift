@@ -19,6 +19,7 @@ var currState:String = ""
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
+    var isLocating = false
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -27,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         locationManager.delegate = self
         checkLocationAuthorization()
-        locationManager.startUpdatingLocation()
+//        locationManager.startUpdatingLocation()
 
     
         return true
@@ -44,31 +45,50 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 break
             }
         }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("Location error: \(error.localizedDescription)")
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+
+        // prevents multiple location requests at the same time
+        if isLocating {
+            return
+        }
+
         guard let location = locations.last else { return }
-        
+        isLocating = true
+
         Task {
-            guard let request = MKReverseGeocodingRequest(location: location) else { return }
-            
+            defer {
+                isLocating = false
+            }
+
+            guard let request = MKReverseGeocodingRequest(location: location) else {
+                return
+            }
+
             do {
                 let mapItems = try await request.mapItems
-                
-                if let firstItem = mapItems.first {
-                    if let city = firstItem.addressRepresentations?.cityName {
-                        print("Current City via MapKit: \(city)")
-                        currCity = city
-                        currState = (firstItem.addressRepresentations?.regionName)!
-              
-                        await MainActor.run {
-                        }
-                    }
+
+                if let firstItem = mapItems.first,
+                   let city = firstItem.addressRepresentations?.cityName,
+                   let state = firstItem.addressRepresentations?.regionName {
+                    print("Current City via MapKit: \(city)")
+                    currCity = city
+                    currState = state
                 }
+
             } catch {
                 print("MapKit reverse geocoding failed: \(error.localizedDescription)")
             }
         }
     }
-
+    
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
+        checkLocationAuthorization()
+    }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
             let tokenParts = deviceToken.map { data in String(format: "%02.2hhx", data) }

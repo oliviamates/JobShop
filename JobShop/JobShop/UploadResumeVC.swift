@@ -9,9 +9,11 @@ import UIKit
 import UniformTypeIdentifiers
 import PDFKit
 import SwiftTextDOCX
+import Vision
+import VisionKit
 
 
-class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UINavigationControllerDelegate, VNDocumentCameraViewControllerDelegate {
     
     @IBOutlet weak var statusMessage: UILabel!
     
@@ -108,17 +110,73 @@ class UploadResumeVC: UIViewController, UIDocumentPickerDelegate, UIImagePickerC
             }
         }
     }
+    
+    // opens up camera but with a scanner functionality instead!
     @IBAction func openCamera(_ sender: Any) {
-            if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                let picker = UIImagePickerController()
-                picker.delegate = self
-                picker.sourceType = .camera
-                present(picker, animated: true, completion: nil)
-            } else {
-                print("Camera not available on this device.")
+        if VNDocumentCameraViewController.isSupported {
+            let scanner = VNDocumentCameraViewController()
+            scanner.delegate = self
+            present(scanner, animated: true)
+        } else {
+            statusMessage.text = "Document scanning is not supported on this device."
+            statusMessage.textColor = .systemRed
+        }
+    }
+    
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFinishWith scan: VNDocumentCameraScan) {
+        
+        controller.dismiss(animated: true)
+        statusMessage.text = "Reading your scanned resume, this may take a few moments!"
+        statusMessage.textColor = .darkGreen
+        
+        var extractedText = ""
+
+        // go through every scanned page
+        for pageIndex in 0..<scan.pageCount {
+
+            let image = scan.imageOfPage(at: pageIndex)
+
+            if let cgImage = image.cgImage {
+                // perform vision recognition on each page
+                let request = VNRecognizeTextRequest()
+                request.recognitionLevel = .accurate
+                request.usesLanguageCorrection = true
+
+                do {
+                    let handler = VNImageRequestHandler(cgImage: cgImage, options: [:])
+                    try handler.perform([request])
+                    if let observations = request.results {
+                        for observation in observations {
+                            if let text = observation.topCandidates(1).first?.string {
+                                extractedText += text + "\n"
+                            }
+                        }
+                    }
+                } catch {
+                    print("error: \(error.localizedDescription)")
+                }
             }
         }
+
+        if extractedText.isEmpty {
+            statusMessage.text = "No text could be found in the scanned resume."
+            statusMessage.textColor = .systemRed
+            return
+        }
+        skillsFromResumeText(resumeText: extractedText)
+    }
     
+    func documentCameraViewControllerDidCancel(_ controller: VNDocumentCameraViewController) {
+        controller.dismiss(animated: true)
+        statusMessage.text = ""
+    }
+
+    func documentCameraViewController(_ controller: VNDocumentCameraViewController, didFailWithError error: Error) {
+        controller.dismiss(animated: true)
+        statusMessage.text = "Error scanning resume. Please try again."
+        statusMessage.textColor = .systemRed
+        print("error: \(error.localizedDescription)")
+    }
 
     @IBAction func cancelPressed(_ sender: Any) {
         dismiss(animated: true)
