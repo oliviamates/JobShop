@@ -2343,7 +2343,6 @@ Find the perfect job for you.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ii-cX-AWJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tJZ-Fg-GU0">
-                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2359,11 +2358,11 @@ Find the perfect job for you.</string>
     <inferredMetricsTieBreakers>
         <segue reference="5mx-Lh-bpf"/>
         <segue reference="0r8-ty-0cb"/>
-        <segue reference="fTy-Lh-SvO"/>
-        <segue reference="4uG-nL-YUo"/>
-        <segue reference="QrU-fj-Brr"/>
+        <segue reference="oDD-r6-I76"/>
+        <segue reference="plu-8o-mAE"/>
+        <segue reference="8AQ-uY-PXb"/>
         <segue reference="mWL-Ke-8ve"/>
-        <segue reference="cQM-t4-3JC"/>
+        <segue reference="M5y-pY-SwV"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>

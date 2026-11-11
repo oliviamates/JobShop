@@ -4,6 +4,7 @@
 //
 //  "Your Matches!" screen: header, search + filter, dropdown, swipeable card stack.
 //  Uses Theme, JobCard and CardView from CardView.swift.
+//  Jobs are loaded from the Jobicy API via JobService.swift and shown 20 at a time.
 //  Present it with e.g. window.rootViewController = MatchesVC()
 //
 import UIKit
@@ -11,40 +12,26 @@ import UserNotifications
 import EventKit
 import EventKitUI
 import FirebaseFirestore
+import FirebaseAuth
 
 class MatchesVC: UIViewController, EKEventEditViewDelegate {
     let eventStore = EKEventStore()
     
-    private var cardsData: [JobCard] = [
-        JobCard(company: "Google", title: "Software Engineer", location: "San Francisco, CA",
-                description: "Software Engineers at Google need to build scalable systems, collaborate with cross-functional teams, and ship products used by billions.",
-                matchPercent: 30, keywords: ["Java", "Python", "JavaScript", "iOS Development"],
-                extraKeywords: 10, salary: "$109000 - $150000 annually",
-                applyURL: URL(string: "https://careers.google.com")),
-        JobCard(company: "Apple", title: "iOS Engineer", location: "Cupertino, CA",
-                description: "Build delightful experiences across Apple platforms using Swift and UIKit.",
-                matchPercent: 62, keywords: ["Swift", "UIKit", "Xcode", "iOS Development"],
-                extraKeywords: 6, salary: "$120000 - $165000 annually",
-                applyURL: URL(string: "https://jobs.apple.com")),
-        JobCard(company: "Meta", title: "Frontend Engineer", location: "Menlo Park, CA",
-                description: "Create fast, accessible interfaces for products used around the world.",
-                matchPercent: 48, keywords: ["JavaScript", "React", "CSS", "GraphQL"],
-                extraKeywords: 8, salary: "$115000 - $155000 annually",
-                applyURL: URL(string: "https://www.metacareers.com")),
-        JobCard(company: "Netflix", title: "Backend Engineer", location: "Los Gatos, CA",
-                description: "Design services that stream to hundreds of millions of members.",
-                matchPercent: 55, keywords: ["Java", "AWS", "Kafka", "Python"],
-                extraKeywords: 7, salary: "$130000 - $180000 annually",
-                applyURL: URL(string: "https://jobs.netflix.com")),
-        JobCard(company: "Spotify", title: "Mobile Engineer", location: "New York, NY",
-                description: "Ship features that connect listeners and creators on iOS and Android.",
-                matchPercent: 71, keywords: ["Swift", "Kotlin", "Python", "iOS Development"],
-                extraKeywords: 5, salary: "$110000 - $150000 annually",
-                applyURL: URL(string: "https://www.lifeatspotify.com"))
-    ]
+    /// The live deck (what's on screen). Last element is the top card.
+    private var cardsData: [JobCard] = []
 
-    /// Master list of every match. Never mutated after viewDidLoad.
+    /// Every card that has been dealt into the deck so far (across batches).
+    /// Used to bring a job back if it's removed from the Saved screen.
     private var allCards: [JobCard] = []
+
+    /// Everything the API returned. The deck is fed from this 20 at a time.
+    private var pool: [JobCard] = []
+    private var poolIndex = 0
+    private let batchSize = 5
+
+    /// Jobs the user swiped left on. They never come back (until the app relaunches).
+    private var dismissedKeys: Set<String> = []
+
     /// True while a swipe-off animation is running, so Firestore updates don't rebuild the deck mid-animation.
     private var isSwiping = false
 
@@ -61,8 +48,6 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        allCards = cardsData
-        
         view.backgroundColor = Theme.background
         if let menuButton {
                 menuButton.menu = makeNavMenu()              // storyboard button
@@ -76,7 +61,7 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         // Saved jobs load asynchronously from Firestore, so rebuild the deck whenever they change.
         NotificationCenter.default.addObserver(self, selector: #selector(savedJobsChanged),
                                                name: .savedJobsChanged, object: nil)
-        refreshDeck()
+        loadJobs()
     }
 
 
@@ -86,6 +71,62 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         refreshDeck()
     }
 
+    
+    private func fetchUserSkills() async -> [String] {
+        guard let uid = Auth.auth().currentUser?.uid else { return [] }
+        do {
+            let snapshot = try await Firestore.firestore()
+                .collection("accounts").document(uid).getDocument()
+            return snapshot.data()?["skills"] as? [String] ?? []
+        } catch {
+            print("Failed to load skills: \(error)")
+            return []
+        }
+    }
+
+    private func loadJobs() {
+        emptyLabel.text = "Loading matches..."
+        emptyLabel.isHidden = false
+
+        Task { [weak self] in
+            guard let self else { return }
+            do {
+                let skills = await self.fetchUserSkills()
+                let jobs = try await JobService.shared.fetchJobs(skills: skills, count: 100)
+                // Best matches first, so the top of the deck is the strongest fit.
+                self.pool = jobs.sorted { $0.matchPercent > $1.matchPercent }
+                self.poolIndex = 0
+                self.emptyLabel.text = "You're all caught up!\nCheck back later for new matches."
+            } catch {
+                print("Failed to load jobs: \(error)")
+                self.emptyLabel.text = "Couldn't load jobs.\nCheck your connection and try again."
+            }
+            self.refreshDeck()
+        }
+    }
+
+    /// Stable identity for a job (matches how the saved-jobs check compares cards).
+    private func key(_ card: JobCard) -> String {
+        "\(card.company)|\(card.title)"
+    }
+
+    /// Deals the next (up to) 20 jobs from the pool into the deck, skipping saved and dismissed ones.
+    @discardableResult
+    private func loadNextBatch() -> Bool {
+        var batch: [JobCard] = []
+        while poolIndex < pool.count && batch.count < batchSize {
+            let job = pool[poolIndex]
+            poolIndex += 1
+            if !store.contains(job) && !dismissedKeys.contains(key(job)) {
+                batch.append(job)
+            }
+        }
+        guard !batch.isEmpty else { return false }
+        allCards.append(contentsOf: batch)
+        cardsData = batch
+        return true
+    }
+
     // MARK: Deck refresh
 
     @objc private func savedJobsChanged() {
@@ -93,14 +134,16 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         refreshDeck()
     }
 
-    /// Removes saved jobs from the deck, and brings back any unsaved job that's missing
-    /// (e.g. one that was removed from the Saved screen).
+    /// Removes saved and dismissed jobs from the deck, brings back any unsaved job that's missing
+    /// (e.g. one that was removed from the Saved screen), and deals the next batch when the deck is empty.
     private func refreshDeck() {
-        cardsData.removeAll { store.contains($0) }
+        cardsData.removeAll { store.contains($0) || dismissedKeys.contains(key($0)) }
         for card in allCards where !store.contains(card)
-            && !cardsData.contains(where: { $0.company == card.company && $0.title == card.title }) {
+            && !dismissedKeys.contains(key(card))
+            && !cardsData.contains(where: { key($0) == key(card) }) {
             cardsData.insert(card, at: 0)
         }
+        if cardsData.isEmpty { loadNextBatch() }
         layoutDeckStack()
         // Refresh heart state in case something was (un)saved on another screen.
         for cardView in cardViews { cardView.setLiked(store.contains(cardView.card)) }
@@ -331,22 +374,23 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
             targetCard.transform = CGAffineTransform(translationX: exitX, y: targetCard.transform.ty)
             targetCard.alpha = 0
         }) { [weak self] _ in
-            self?.recycleCard(targetCard)
+            self?.recycleCard(targetCard, dismissed: !directionRight)
         }
     }
 
-    private func recycleCard(_ cardView: CardView) {
+    /// Removes the swiped card from the deck for good. Saved cards live on the Saved screen,
+    /// skipped cards are dismissed and never reinserted.
+    private func recycleCard(_ cardView: CardView, dismissed: Bool) {
         isSwiping = false
-        guard cardViews.contains(cardView), !cardsData.isEmpty else {
-            refreshDeck()
-            return
-        }
-        let swiped = cardsData.removeLast()
+        let swipedKey = key(cardView.card)
+        if dismissed { dismissedKeys.insert(swipedKey) }
+        cardsData.removeAll { key($0) == swipedKey }
 
-        if !store.contains(swiped) {
-            cardsData.insert(swiped, at: 0)   // skipped goes to the back for now
+        if cardsData.isEmpty {
+            refreshDeck()      // deals the next batch of 20, or shows the empty state
+        } else {
+            layoutDeckStack()
         }
-        layoutDeckStack()
     }
     
     private let emptyLabel: UILabel = {
