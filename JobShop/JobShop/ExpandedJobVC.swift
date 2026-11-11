@@ -26,13 +26,6 @@ class ExpandedJobVC: UIViewController {
         view.backgroundColor = Theme.background
  
         let header = addHeaderBar()
-        let menu = makeMenuButton()
-
-        header.addSubview(menu)
-        NSLayoutConstraint.activate([
-            menu.trailingAnchor.constraint(equalTo: header.trailingAnchor, constant: -20),
-            menu.centerYAnchor.constraint(equalTo: header.centerYAnchor)
-        ])
  
         buildContent(below: header)
     }

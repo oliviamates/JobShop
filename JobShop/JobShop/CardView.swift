@@ -268,10 +268,12 @@ class CardView: UIView {
             root.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24)
         ])
     }
+    
 
     func setLiked(_ liked: Bool) {
         let cfg = UIImage.SymbolConfiguration(pointSize: 30, weight: .regular)
         heartButton.setImage(UIImage(systemName: liked ? "heart.fill" : "heart", withConfiguration: cfg), for: .normal)
+ 
     }
 
     @objc private func heartTapped() { onHeartTapped?() }

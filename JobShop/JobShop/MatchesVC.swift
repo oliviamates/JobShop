@@ -294,22 +294,6 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         topCard.onHeartTapped = { [weak self, weak topCard] in
             guard let self, let topCard else { return }
             self.animateSwipeOffScreen(targetCard: topCard, directionRight: true)
-                    let center = UNUserNotificationCenter.current()
-                    let content = UNMutableNotificationContent()
-                    content.title = "Job Shop Reminder"
-                    content.body = "You have " + String(globalNotifChoice) + " days to apply to " + topCard.card.company
-                    content.sound = .default
-                    
-                    let trigger = UNTimeIntervalNotificationTrigger(timeInterval: globalNotifChoice, repeats: false)
-                    let uuidString = UUID().uuidString
-                    let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-                
-                    center.add(request) { error in
-                        if let error = error {
-                            print("Error scheduling notification: \(error.localizedDescription)")
-                        }
-                    }
-            presentEventEditor(topCard.card.company)
 
         }
     }
@@ -367,6 +351,22 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         if directionRight {
             targetCard.setLiked(true)
             store.save(targetCard.card)   // writes to Firestore
+            let center = UNUserNotificationCenter.current()
+            let content = UNMutableNotificationContent()
+            content.title = "Job Shop Reminder"
+            content.body = "You have " + String(globalNotifChoice) + " days to apply to " + targetCard.card.company
+            content.sound = .default
+            
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: globalNotifChoice, repeats: false)
+            let uuidString = UUID().uuidString
+            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
+        
+            center.add(request) { error in
+                if let error = error {
+                    print("Error scheduling notification: \(error.localizedDescription)")
+                }
+            }
+            presentEventEditor(targetCard.card.company)
         }
 
         let exitX = directionRight ? view.frame.width + 150 : -view.frame.width - 150
