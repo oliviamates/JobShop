@@ -135,9 +135,8 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 0 {
-            return savedLocations.count
+            return savedLocations.count + 1
         }
-
         return isSearching ? results.count : 0
     }
 
@@ -160,9 +159,18 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
 
         if indexPath.section == 0 {
             // Saved locations with red minus icon
-            content.text = savedLocations[indexPath.row]
-            content.image = UIImage(systemName: "minus.circle")
-            content.imageProperties.tintColor = .systemRed
+            if indexPath.row == 0 {
+                    content.text = "Use Current Location"
+                    content.secondaryText = "Add your current city and state"
+                    content.image = UIImage(systemName: "location.fill")
+                    content.imageProperties.tintColor = .systemBlue
+
+            }
+            else {
+                content.text = savedLocations[indexPath.row - 1]
+                content.image = UIImage(systemName: "minus.circle")
+                content.imageProperties.tintColor = .systemRed
+            }
 
         } else {
             // Search suggestion with green plus icon
@@ -182,7 +190,13 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
 
         // Tapping a saved location removes it
         if indexPath.section == 0 {
-            removeLocation(at: indexPath.row)
+            if indexPath.row == 0 {
+                let location = "\(currCity), \(currState)"
+                addLocation(location)
+                return
+            }
+            
+            removeLocation(at: indexPath.row - 1)
             return
         }
 

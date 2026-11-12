@@ -82,8 +82,9 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
         print("Search error: \(error.localizedDescription)")
     }
 
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return results.count
+        return results.count + 1
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -93,8 +94,18 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
         )
 
         var content = cell.defaultContentConfiguration()
-        content.text = results[indexPath.row].title
-        content.secondaryText = results[indexPath.row].subtitle
+        if indexPath.row == 0 {
+            content.text = "Use Current Location"
+            content.secondaryText = "Use your current city and state"
+            content.image = UIImage(systemName: "location.fill")
+            content.imageProperties.tintColor = .systemBlue
+
+        }
+        else {
+            content.text = results[indexPath.row - 1].title
+            content.secondaryText = results[indexPath.row - 1].subtitle
+        }
+
         cell.contentConfiguration = content
 
         return cell
@@ -103,7 +114,19 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         errorMessage.text = ""
-        
+        if indexPath.row == 0 {
+
+                let location = "\(currCity), \(currState)"
+
+                searchBar.text = location
+
+                results = []
+                tableView.reloadData()
+
+                searchBar.resignFirstResponder()
+
+                return
+        }
    
             let completion = results[indexPath.row]
             let request = MKLocalSearch.Request(completion: completion)
