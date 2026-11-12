@@ -31,7 +31,7 @@ class SavedJobsStore {
         }
     }
 
-    // MARK: Public API (unchanged signatures)
+
 
     func contains(_ job: JobCard) -> Bool {
         let key = Self.key(for: job)
@@ -83,7 +83,6 @@ class SavedJobsStore {
         }
     }
 
-    // MARK: Firestore
 
     private func collection() -> CollectionReference? {
         guard let uid = Auth.auth().currentUser?.uid else { return nil }
@@ -109,7 +108,6 @@ class SavedJobsStore {
             }
     }
 
-    // MARK: Encoding
 
     private static func key(for job: JobCard) -> String {
         "\(job.company)_\(job.title)".lowercased()
@@ -153,8 +151,6 @@ class SavedJobsStore {
             applyURL: URL(string: d["applyURL"] as? String ?? ""))
     }
 }
-
-// MARK: - Tabs
 
 enum AppDestination: Int {
     case matches = 0

@@ -279,7 +279,6 @@ class CardView: UIView {
     @objc private func heartTapped() { onHeartTapped?() }
     @objc private func cardTapped() { onTapped?() }
 
-    /// depth 0 = top card (straight); deeper cards fan out behind it.
     func applyStackTransform(depth: Int) {
         guard depth > 0 else { transform = .identity; return }
         let sign: CGFloat = depth % 2 == 0 ? -1 : 1

@@ -193,7 +193,6 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     }
 }
 
-// MARK: - Row cell
 
 final class SavedJobCell: UITableViewCell {
     static let reuseID = "SavedJobCell"

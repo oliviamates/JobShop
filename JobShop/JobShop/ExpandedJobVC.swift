@@ -194,7 +194,6 @@ class ExpandedJobVC: UIViewController {
         refreshHeart()
     }
  
-    // MARK: Status
  
     private func refreshStatusButton() {
         var c = UIButton.Configuration.filled()

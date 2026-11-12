@@ -2,10 +2,6 @@
 //  MatchesVC.swift
 //  JobShop
 //
-//  "Your Matches!" screen: header, search + filter, dropdown, swipeable card stack.
-//  Uses Theme, JobCard and CardView from CardView.swift.
-//  Jobs are loaded from the Jobicy API via JobService.swift and shown 20 at a time.
-//  Present it with e.g. window.rootViewController = MatchesVC()
 //
 import UIKit
 import UserNotifications
@@ -17,22 +13,17 @@ import FirebaseAuth
 class MatchesVC: UIViewController, EKEventEditViewDelegate {
     let eventStore = EKEventStore()
     
-    /// The live deck (what's on screen). Last element is the top card.
     private var cardsData: [JobCard] = []
 
-    /// Every card that has been dealt into the deck so far (across batches).
-    /// Used to bring a job back if it's removed from the Saved screen.
+
     private var allCards: [JobCard] = []
 
-    /// Everything the API returned. The deck is fed from this 20 at a time.
     private var pool: [JobCard] = []
     private var poolIndex = 0
     private let batchSize = 5
 
-    /// Jobs the user swiped left on. They never come back (until the app relaunches).
     private var dismissedKeys: Set<String> = []
 
-    /// True while a swipe-off animation is running, so Firestore updates don't rebuild the deck mid-animation.
     private var isSwiping = false
 
     private let store = SavedJobsStore.shared
@@ -105,12 +96,12 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         }
     }
 
-    /// Stable identity for a job (matches how the saved-jobs check compares cards).
+
     private func key(_ card: JobCard) -> String {
         "\(card.company)|\(card.title)"
     }
 
-    /// Deals the next (up to) 20 jobs from the pool into the deck, skipping saved and dismissed ones.
+
     @discardableResult
     private func loadNextBatch() -> Bool {
         var batch: [JobCard] = []
@@ -127,15 +118,12 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         return true
     }
 
-    // MARK: Deck refresh
 
     @objc private func savedJobsChanged() {
         guard !isSwiping else { return }
         refreshDeck()
     }
 
-    /// Removes saved and dismissed jobs from the deck, brings back any unsaved job that's missing
-    /// (e.g. one that was removed from the Saved screen), and deals the next batch when the deck is empty.
     private func refreshDeck() {
         cardsData.removeAll { store.contains($0) || dismissedKeys.contains(key($0)) }
         for card in allCards where !store.contains(card)
@@ -378,8 +366,7 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         }
     }
 
-    /// Removes the swiped card from the deck for good. Saved cards live on the Saved screen,
-    /// skipped cards are dismissed and never reinserted.
+
     private func recycleCard(_ cardView: CardView, dismissed: Bool) {
         isSwiping = false
         let swipedKey = key(cardView.card)
