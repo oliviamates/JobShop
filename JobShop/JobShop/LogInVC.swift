@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseFirestore
 
 class LogInVC: UIViewController {
 
@@ -26,6 +27,29 @@ class LogInVC: UIViewController {
     @IBAction func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    private func incrementLoginCount() async {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+
+        let db = Firestore.firestore()
+
+        do {
+            try await db.collection("accounts")
+                .document(uid)
+                .setData([
+                    "loginCount": FieldValue.increment(Int64(1))
+                ], merge: true)
+
+            print("Login count successfully incremented!")
+
+        } catch {
+            print("Error updating login count: \(error)")
+        }
+    }
+    
+    
     @IBAction func loginDone(_ sender: Any) {
         self.errorMessage.text = ""
 
@@ -49,6 +73,9 @@ class LogInVC: UIViewController {
                 self.errorMessage.text = "\(error.localizedDescription)"
             } else {
                 self.passwordField.text = ""
+                Task {
+                    await self.incrementLoginCount()
+                }
                
                 DispatchQueue.main.async {
                                self.performSegue(withIdentifier: "goToMatches", sender: self)

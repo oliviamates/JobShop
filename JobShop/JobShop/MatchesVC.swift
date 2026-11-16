@@ -21,6 +21,7 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     private var pool: [JobCard] = []
     private var poolIndex = 0
     private let batchSize = 5
+    private var loginCount = 0
 
     private var dismissedKeys: Set<String> = []
 
@@ -82,8 +83,14 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         Task { [weak self] in
             guard let self else { return }
             do {
+                self.loginCount = await self.fetchLoginCount()
+                self.setupFilterMenu()
                 let skills = await self.fetchUserSkills()
-                let jobs = try await JobService.shared.fetchJobs(skills: skills, count: 100)
+
+                let jobs = try await JobService.shared.fetchJobs(
+                    skills: skills,
+                    count: 100
+                )
                 // Best matches first, so the top of the deck is the strongest fit.
                 self.pool = jobs.sorted { $0.matchPercent > $1.matchPercent }
                 self.poolIndex = 0
@@ -177,31 +184,71 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
             self.searchBar = bar
         }
     }
+    
+    private func fetchLoginCount() async -> Int {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return 0
+        }
+
+        do {
+            let snapshot = try await Firestore.firestore()
+                .collection("accounts")
+                .document(uid)
+                .getDocument()
+
+            return snapshot.data()?["loginCount"] as? Int ?? 0
+
+        } catch {
+            print("Failed to fetch login count: \(error)")
+            return 0
+        }
+    }
+    
 
 
     private func setupFilterMenu() {
+        let payRangeUnlocked = loginCount >= 5
+        let recencyUnlocked = loginCount >= 10
+        let jobModalUnlocked = loginCount >= 15
+
         func item(_ title: String, locked: Bool = false) -> UIAction {
-            UIAction(title: title,
-                     image: locked ? UIImage(systemName: "lock") : nil,
-                     attributes: locked ? .disabled : []) { _ in
+            UIAction(
+                title: title,
+                image: locked ? UIImage(systemName: "lock") : nil,
+                attributes: locked ? .disabled : []
+            ) { _ in
+                // Filter actually working
             }
         }
+
         let filterMenu = UIMenu(children: [
-                item("Job Type:"), item("Location:"), item("Industry:"),
-                item("Pay Range:", locked: true), item("Recency:", locked: true), item("Job Modal:", locked: true)
-            ])
+            item("Job Type:"),
+            item("Location:"),
+            item("Industry:"),
+
+            item("Pay Range:", locked: !payRangeUnlocked),
+            item("Recency:", locked: !recencyUnlocked),
+            item("Job Modal:", locked: !jobModalUnlocked)
+        ])
 
         if let filterButton = filterButton {
             filterButton.menu = filterMenu
             filterButton.showsMenuAsPrimaryAction = true
+
         } else {
             let codeFilterButton = UIButton(type: .system)
+
             codeFilterButton.setTitle("Filter ", for: .normal)
-            codeFilterButton.setImage(UIImage(systemName: "line.3.horizontal.decrease.circle"), for: .normal)
+            codeFilterButton.setImage(
+                UIImage(systemName: "line.3.horizontal.decrease.circle"),
+                for: .normal
+            )
+
             codeFilterButton.menu = filterMenu
             codeFilterButton.showsMenuAsPrimaryAction = true
-            
-            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: codeFilterButton)
+
+            navigationItem.leftBarButtonItem =
+                UIBarButtonItem(customView: codeFilterButton)
         }
     }
 

@@ -29,6 +29,29 @@ class CreateAccountVC: UIViewController {
     @IBAction func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    private func incrementLoginCount() async {
+        guard let uid = Auth.auth().currentUser?.uid else {
+            return
+        }
+
+        let db = Firestore.firestore()
+
+        do {
+            try await db.collection("accounts")
+                .document(uid)
+                .setData([
+                    "loginCount": FieldValue.increment(Int64(1))
+                ], merge: true)
+
+            print("Login count successfully incremented!")
+
+        } catch {
+            print("Error updating login count: \(error)")
+        }
+    }
+    
+    
     @IBAction func step1Done(_ sender: Any) {
         self.errorMessage.text = ""
         
@@ -75,6 +98,9 @@ class CreateAccountVC: UIViewController {
                         self.errorMessage.text = "\(err.localizedDescription)"
                     } else {
                         print("Account saved with ID: \(user.uid)")
+                        Task {
+                            await self.incrementLoginCount()
+                        }
                             self.performSegue(
                                 withIdentifier: "createPrefsSegueIdentifier",
                                 sender: nil
