@@ -30,23 +30,60 @@ class LogInVC: UIViewController {
     
     private func incrementLoginCount() async {
         guard let uid = Auth.auth().currentUser?.uid else {
-            return
-        }
+                return
+            }
 
-        let db = Firestore.firestore()
+            let db = Firestore.firestore()
+            let userRef = db.collection("accounts").document(uid)
 
-        do {
-            try await db.collection("accounts")
-                .document(uid)
-                .setData([
-                    "loginCount": FieldValue.increment(Int64(1))
-                ], merge: true)
+            let formatter = DateFormatter()
+            formatter.dateFormat = "yyyy-MM-dd"
+            formatter.timeZone = TimeZone.current
 
-            print("Login count successfully incremented!")
+            let today = formatter.string(from: Date())
 
-        } catch {
-            print("Error updating login count: \(error)")
-        }
+            do {
+                try await withCheckedThrowingContinuation {
+                    (continuation: CheckedContinuation<Void, Error>) in
+
+                    db.runTransaction({ transaction, errorPointer -> Any? in
+
+                        do {
+                            let snapshot = try transaction.getDocument(userRef)
+
+                            let lastLoginDay = snapshot.data()?["lastLoginDay"] as? String ?? ""
+                            let currentDays = snapshot.data()?["loginCount"] as? Int ?? 0
+
+                            if lastLoginDay != today {
+
+                                transaction.setData([
+                                    "loginCount": currentDays + 1,
+                                    "lastLoginDay": today
+                                ], forDocument: userRef, merge: true)
+                            }
+
+                            return nil
+
+                        } catch {
+                            errorPointer?.pointee = error as NSError
+                            return nil
+                        }
+
+                    }, completion: { _, error in
+
+                        if let error = error {
+                            continuation.resume(throwing: error)
+                        } else {
+                            continuation.resume()
+                        }
+                    })
+                }
+
+                print("Login days successfully updated!")
+
+            } catch {
+                print("Error updating login days: \(error)")
+            }
     }
     
     
