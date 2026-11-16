@@ -12,8 +12,7 @@ import FirebaseAppCheck
 import CoreLocation
 import MapKit
 
-var currCity:String = ""
-var currState:String = ""
+var currCityAndState: String = ""
 @main
 
 class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, CLLocationManagerDelegate {
@@ -28,10 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         FirebaseApp.configure()
         locationManager.delegate = self
         checkLocationAuthorization()
-
-//        locationManager.startUpdatingLocation()
-
-    
         return true
     }
     func checkLocationAuthorization() {
@@ -71,14 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
 
             do {
-                let mapItems = try await request.mapItems
+                    let mapItems = try await request.mapItems
 
-                if let firstItem = mapItems.first,
-                   let city = firstItem.addressRepresentations?.cityName,
-                   let state = firstItem.addressRepresentations?.regionName {
-                    print("Current City via MapKit: \(city)")
-                    currCity = city
-                    currState = state
+                    if let firstItem = mapItems.first,
+                       let address = firstItem.addressRepresentations {
+                        currCityAndState = address.cityWithContext(.short) ?? ""
+                        print("Current City and State: \(currCityAndState)")
                 }
 
             } catch {

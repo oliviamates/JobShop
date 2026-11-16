@@ -191,7 +191,7 @@ class WorkingLocationsVC: UIViewController, UITableViewDelegate, UITableViewData
         // Tapping a saved location removes it
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                let location = "\(currCity), \(currState)"
+                let location = "\(currCityAndState)"
                 addLocation(location)
                 return
             }

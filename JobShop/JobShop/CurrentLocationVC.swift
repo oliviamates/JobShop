@@ -116,7 +116,7 @@ class CurrentLocationVC: UIViewController, UITableViewDelegate, UITableViewDataS
         errorMessage.text = ""
         if indexPath.row == 0 {
 
-                let location = "\(currCity), \(currState)"
+                let location = "\(currCityAndState)"
 
                 searchBar.text = location
 
