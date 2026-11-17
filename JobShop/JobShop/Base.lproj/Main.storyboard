@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24765" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="25098" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eKv-99-MiR">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24743"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="25073"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -247,6 +247,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-la-EcR">
+                                                    <rect key="frame" x="276" y="8" width="63" height="28"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <action selector="applicationRemindersToggled:" destination="zr8-l8-2LQ" eventType="valueChanged" id="n0h-iA-12A"/>
+                                                    </connections>
+                                                </switch>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="4Xi-af-0RX" firstAttribute="top" secondItem="5B6-jK-qKx" secondAttribute="top" constant="8" id="7Hx-P1-wDu"/>
@@ -396,6 +403,7 @@
                         <barButtonItem key="rightBarButtonItem" image="line.3.horizontal" catalog="system" style="plain" id="IUe-IK-ELJ"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="applicationReminderSwitch" destination="BHy-la-EcR" id="htq-an-Eon"/>
                         <outlet property="dayButton" destination="55L-yg-e6M" id="kLI-qO-7sF"/>
                         <outlet property="dayMenu" destination="PIz-fL-YQM" id="nBX-JC-XUS"/>
                         <outlet property="emailLabel" destination="BCE-xy-sYJ" id="6K3-p1-ySd"/>
@@ -2343,6 +2351,7 @@ Find the perfect job for you.</string>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Ii-cX-AWJ" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="tJZ-Fg-GU0">
+                        <rect key="frame" x="0.0" y="118" width="393" height="54"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -2366,11 +2375,11 @@ Find the perfect job for you.</string>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="Job" width="500" height="500"/>
-        <image name="camera.fill" catalog="system" width="128" height="93"/>
-        <image name="chevron.right" catalog="system" width="97" height="128"/>
-        <image name="doc.fill" catalog="system" width="115" height="128"/>
-        <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
-        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
+        <image name="camera.fill" catalog="system" width="128" height="96"/>
+        <image name="chevron.right" catalog="system" width="93" height="128"/>
+        <image name="doc.fill" catalog="system" width="111" height="128"/>
+        <image name="line.3.horizontal" catalog="system" width="128" height="69"/>
+        <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="128"/>
         <namedColor name="DarkGreen">
             <color red="0.10588235294117647" green="0.40392156862745099" blue="0.13333333333333333" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

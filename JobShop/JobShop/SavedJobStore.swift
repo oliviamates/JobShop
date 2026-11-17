@@ -148,7 +148,8 @@ class SavedJobsStore {
             salary: d["salary"] as? String ?? "",
             dateApplied: d["dateApplied"] as? String ?? "",
             status: status,
-            applyURL: URL(string: d["applyURL"] as? String ?? ""))
+            applyURL: URL(string: d["applyURL"] as? String ?? ""),
+            savedAt: (d["savedAt"] as? Timestamp)?.dateValue())
     }
 }
 

@@ -13,6 +13,7 @@ import UserNotifications
 
 var globalNotifChoice: Double = 86400
 var globalCal: Bool = false
+var globalReminders: Bool = false
 
 class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificationCenterDelegate {
 
@@ -26,6 +27,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var skillsLabel: UILabel!
     @IBOutlet weak var dayButton: UIButton!
     
+    @IBOutlet weak var applicationReminderSwitch: UISwitch!
     
     let db = Firestore.firestore()
 
@@ -54,7 +56,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         
         dayButton.menu = dayMenu
         dayButton.showsMenuAsPrimaryAction = true
-        dayButton.changesSelectionAsPrimaryAction = true
+        dayButton.changesSelectionAsPrimaryAction = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -65,15 +67,15 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         loadIndustries()
         loadJobTypes()
         loadSkills()
+        loadNotificationPreference()
     }
     
     @IBAction func requestPerm(_ sender: Any) {
         UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
-                print("calendar Permission granted: \(granted)")
+                print("notifications permission granted: \(granted)")
             
         }
- 
     }
     
     func loadProfile() {
@@ -100,6 +102,72 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
                 globalCal = true
             } 
         
+    }
+    
+    @IBAction func applicationRemindersToggled(_ sender: UISwitch) {
+        globalReminders = sender.isOn
+        dayButton.isEnabled = sender.isOn
+        // if reminders not enabled then gray out drop down
+        dayButton.alpha = sender.isOn ? 1.0 : 0.4
+
+        if sender.isOn {
+            requestPerm(sender)
+        }
+        
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).setData([
+            "remindersEnabled": sender.isOn
+        ], merge: true) { error in
+            if let error {
+                print("\(error.localizedDescription)")
+            }
+        }
+
+        // cancel existing reminders when switched off
+        if !sender.isOn {
+            UNUserNotificationCenter.current().getPendingNotificationRequests { requests in
+                let IDsToRemove = requests
+                    .filter { $0.identifier.hasPrefix("jobshop-") }
+                    .map { $0.identifier }
+
+                UNUserNotificationCenter.current()
+                    .removePendingNotificationRequests(withIdentifiers: IDsToRemove)
+            }
+        }
+    }
+    
+    func loadNotificationPreference() {
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).getDocument { [weak self] document, err in
+            guard let self = self else { return }
+
+            if let err {
+                print("\(err.localizedDescription)")
+                return
+            }
+
+            let data = document?.data() ?? [:]
+
+            let savedChoice = data["notifChoice"] as? Int ?? 86400
+            let remindersEnabled = data["remindersEnabled"] as? Bool ?? false
+
+            globalNotifChoice = Double(savedChoice)
+            globalReminders = remindersEnabled
+
+            self.applicationReminderSwitch.isOn = remindersEnabled
+            self.dayButton.isEnabled = remindersEnabled
+            self.dayButton.alpha = remindersEnabled ? 1.0 : 0.4
+
+            if savedChoice == 259200 {
+                self.dayButton.setTitle("3 days after saving", for: .normal)
+            } else if savedChoice == 604800 {
+                self.dayButton.setTitle("7 days after saving", for: .normal)
+            } else {
+                self.dayButton.setTitle("1 day after saving", for: .normal)
+            }
+        }
     }
     
     func loadWorkingLocations() {
@@ -196,16 +264,27 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     
     @IBOutlet weak var dayMenu: UIMenu!
     
-    func selectDay(_ title: String){
+    func selectDay(_ title: String) {
         if title == "1 day after saving" {
             globalNotifChoice = 1 * 86400
-        }
-        else if title == "3 days after saving"{
+        } else if title == "3 days after saving" {
             globalNotifChoice = 3 * 86400
-        }
-        else {
+        } else {
             globalNotifChoice = 7 * 86400
         }
-        print(globalNotifChoice)
+
+        dayButton.setTitle(title, for: .normal)
+
+        guard let user = Auth.auth().currentUser else { return }
+
+        db.collection("accounts").document(user.uid).setData([
+            "notifChoice": Int(globalNotifChoice)
+        ], merge: true) { error in
+            if let error {
+                print("Error saving reminder preference: \(error.localizedDescription)")
+            } else {
+                print("SAVED INTERVAL: \(Int(globalNotifChoice))")
+            }
+        }
     }
 }

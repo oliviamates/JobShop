@@ -14,8 +14,6 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     let eventStore = EKEventStore()
     
     private var cardsData: [JobCard] = []
-
-
     private var allCards: [JobCard] = []
 
     private var pool: [JobCard] = []
@@ -26,7 +24,6 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     private var dismissedKeys: Set<String> = []
 
     private var isSwiping = false
-
     private let store = SavedJobsStore.shared
     private var cardViews: [CardView] = []
     private let containerView = UIView()
@@ -102,7 +99,6 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
             self.refreshDeck()
         }
     }
-
 
     private func key(_ card: JobCard) -> String {
         "\(card.company)|\(card.title)"
@@ -386,21 +382,7 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         if directionRight {
             targetCard.setLiked(true)
             store.save(targetCard.card)   // writes to Firestore
-            let center = UNUserNotificationCenter.current()
-            let content = UNMutableNotificationContent()
-            content.title = "Job Shop Reminder"
-            content.body = "You have " + String(globalNotifChoice) + " days to apply to " + targetCard.card.company
-            content.sound = .default
-            
-            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: globalNotifChoice, repeats: false)
-            let uuidString = UUID().uuidString
-            let request = UNNotificationRequest(identifier: uuidString, content: content, trigger: trigger)
-        
-            center.add(request) { error in
-                if let error = error {
-                    print("Error scheduling notification: \(error.localizedDescription)")
-                }
-            }
+            scheduleReminder(for: targetCard.card)
             presentEventEditor(targetCard.card.company)
         }
 
@@ -411,6 +393,57 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
         }) { [weak self] _ in
             self?.recycleCard(targetCard, dismissed: !directionRight)
         }
+    }
+    
+    private func scheduleReminder(for job: JobCard) {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        Firestore.firestore()
+            .collection("accounts")
+            .document(uid)
+            .getDocument { snapshot, error in
+
+                if let error {
+                    print("\(error.localizedDescription)")
+                    return
+                }
+
+                let data = snapshot?.data() ?? [:]
+                let enabled = data["remindersEnabled"] as? Bool ?? false
+                let choice = data["notifChoice"] as? Int ?? 86400
+
+                globalReminders = enabled
+                globalNotifChoice = Double(choice)
+
+                // don't schedule anything if reminders are disabled
+                guard enabled else { return }
+
+                let content = UNMutableNotificationContent()
+                content.title = "JobShop Application Reminder"
+                content.body = "Apply to \(job.title) at \(job.company)!"
+                content.sound = .default
+
+                let trigger = UNTimeIntervalNotificationTrigger(
+                    timeInterval: Double(choice),
+                    repeats: false
+                )
+
+                let identifier = "jobshop-\(job.company)-\(job.title)"
+
+                let request = UNNotificationRequest(
+                    identifier: identifier,
+                    content: content,
+                    trigger: trigger
+                )
+
+                UNUserNotificationCenter.current().add(request) { error in
+                    if let error {
+                            print("Notification scheduling error: \(error.localizedDescription)")
+                        } else {
+                            print("Notification successfully scheduled!")
+                        }
+                }
+            }
     }
 
 

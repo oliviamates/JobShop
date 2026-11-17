@@ -64,6 +64,7 @@ struct JobCard {
     var dateApplied: String = "September 15th, 2026"
     var status: ApplicationStatus = .notApplied
     var applyURL: URL? = nil
+    var savedAt: Date? = nil
 }
 
 // MARK: - Shared UI helpers

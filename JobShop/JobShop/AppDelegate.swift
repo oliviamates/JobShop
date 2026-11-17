@@ -66,14 +66,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             }
 
             do {
-                    let mapItems = try await request.mapItems
+                let mapItems = try await request.mapItems
 
-                    if let firstItem = mapItems.first,
-                       let address = firstItem.addressRepresentations {
-                        currCityAndState = address.cityWithContext(.short) ?? ""
-                        print("Current City and State: \(currCityAndState)")
+                if let firstItem = mapItems.first,
+                   let address = firstItem.addressRepresentations {
+                    currCityAndState = address.cityWithContext(.short) ?? ""
                 }
-
             } catch {
                 print("MapKit reverse geocoding failed: \(error.localizedDescription)")
             }
