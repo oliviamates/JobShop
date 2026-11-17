@@ -247,9 +247,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-la-EcR">
-                                                    <rect key="frame" x="276" y="8" width="63" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BHy-la-EcR">
+                                                    <rect key="frame" x="276" y="36" width="63" height="28"/>
                                                     <connections>
                                                         <action selector="applicationRemindersToggled:" destination="zr8-l8-2LQ" eventType="valueChanged" id="n0h-iA-12A"/>
                                                     </connections>
@@ -258,10 +257,12 @@
                                             <constraints>
                                                 <constraint firstItem="4Xi-af-0RX" firstAttribute="top" secondItem="5B6-jK-qKx" secondAttribute="top" constant="8" id="7Hx-P1-wDu"/>
                                                 <constraint firstItem="4Xi-af-0RX" firstAttribute="leading" secondItem="5B6-jK-qKx" secondAttribute="leading" constant="16" id="Dd6-Og-kM7"/>
+                                                <constraint firstAttribute="trailing" secondItem="BHy-la-EcR" secondAttribute="trailing" constant="16" id="N4K-VE-yzz"/>
                                                 <constraint firstItem="qeL-ou-s1h" firstAttribute="leading" secondItem="5B6-jK-qKx" secondAttribute="leading" constant="16" id="RwM-Zo-VY5"/>
                                                 <constraint firstItem="qeL-ou-s1h" firstAttribute="top" secondItem="4Xi-af-0RX" secondAttribute="bottom" constant="3" id="WEv-EE-9my"/>
                                                 <constraint firstItem="55L-yg-e6M" firstAttribute="leading" secondItem="5B6-jK-qKx" secondAttribute="leading" constant="16" id="Y1V-aH-59z"/>
                                                 <constraint firstItem="55L-yg-e6M" firstAttribute="top" secondItem="qeL-ou-s1h" secondAttribute="bottom" constant="8" symbolic="YES" id="ciI-wg-EMD"/>
+                                                <constraint firstItem="BHy-la-EcR" firstAttribute="centerY" secondItem="5B6-jK-qKx" secondAttribute="centerY" id="pzE-P5-0fU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -301,55 +302,19 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="90" id="XiQ-nE-mgH">
-                                        <rect key="frame" x="20" y="561" width="353" height="90"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="XiQ-nE-mgH" id="CZ7-vB-hpm">
-                                            <rect key="frame" x="0.0" y="0.0" width="353" height="90"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Job Matches" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Re-ov-qMT">
-                                                    <rect key="frame" x="16" y="5" width="102" height="30"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="eIo-Sz-6d7">
-                                                    <rect key="frame" x="276" y="31" width="63" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </switch>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Get notified when new jobs with a high match score are found" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6LG-g9-VOp">
-                                                    <rect key="frame" x="16" y="40" width="219" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Skills" id="pHJ-mB-ajU">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="OIB-75-gjL">
-                                        <rect key="frame" x="20" y="707" width="353" height="51"/>
+                                        <rect key="frame" x="20" y="617" width="353" height="51"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OIB-75-gjL" id="L5a-Ua-J3M">
                                             <rect key="frame" x="0.0" y="0.0" width="353" height="51"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Includes those extracted from your resume!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfL-bD-K0U">
-                                                    <rect key="frame" x="16" y="11" width="191" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQf-fK-aqm">
-                                                    <rect key="frame" x="211" y="11" width="113" height="28"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gQf-fK-aqm">
+                                                    <rect key="frame" x="229.66666666666666" y="11.666666666666664" width="107.33333333333334" height="28"/>
                                                     <color key="backgroundColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
@@ -361,11 +326,22 @@
                                                         <segue destination="SKB-Gg-tEF" kind="presentation" modalPresentationStyle="fullScreen" id="mWL-Ke-8ve"/>
                                                     </connections>
                                                 </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Includes those extracted from your resume!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UfL-bD-K0U">
+                                                    <rect key="frame" x="16" y="8" width="180" height="35"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="gQf-fK-aqm" firstAttribute="centerY" secondItem="L5a-Ua-J3M" secondAttribute="centerY" id="DaX-2c-Hnl"/>
+                                                <constraint firstAttribute="trailing" secondItem="gQf-fK-aqm" secondAttribute="trailing" constant="16" id="Tar-Ng-Jlg"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="cBG-tv-wXs" detailTextLabel="mDw-1w-9fg" style="IBUITableViewCellStyleSubtitle" id="suo-7N-THh">
-                                        <rect key="frame" x="20" y="758" width="353" height="59"/>
+                                        <rect key="frame" x="20" y="668" width="353" height="59"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="suo-7N-THh" id="48j-AL-xM2">
                                             <rect key="frame" x="0.0" y="0.0" width="322.66666666666669" height="59"/>
@@ -2367,7 +2343,7 @@ Find the perfect job for you.</string>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="5mx-Lh-bpf"/>
-        <segue reference="0r8-ty-0cb"/>
+        <segue reference="ZFB-Ui-pQx"/>
         <segue reference="oDD-r6-I76"/>
         <segue reference="plu-8o-mAE"/>
         <segue reference="8AQ-uY-PXb"/>
