@@ -28,6 +28,7 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     @IBOutlet weak var dayButton: UIButton!
     
     @IBOutlet weak var applicationReminderSwitch: UISwitch!
+    @IBOutlet weak var calendarSwitch: UISwitch!
     
     let db = Firestore.firestore()
 
@@ -74,7 +75,6 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         UNUserNotificationCenter.current().delegate = self
             UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
                 print("notifications permission granted: \(granted)")
-            
         }
     }
     
@@ -98,12 +98,17 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
     
     
     @IBAction func remindersOn(_ sender: UISwitch) {
-        if sender.isOn{
-                globalCal = true
-            } 
-        
+        globalCal = sender.isOn
+        guard let user = Auth.auth().currentUser else { return }
+        db.collection("accounts").document(user.uid).setData([
+            "calendarEnabled": sender.isOn
+        ], merge: true) { error in
+            if let error {
+                print("\(error.localizedDescription)")
+            }
+        }
     }
-    
+
     @IBAction func applicationRemindersToggled(_ sender: UISwitch) {
         globalReminders = sender.isOn
         dayButton.isEnabled = sender.isOn
@@ -149,14 +154,16 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
             }
 
             let data = document?.data() ?? [:]
-
             let savedChoice = data["notifChoice"] as? Int ?? 86400
             let remindersEnabled = data["remindersEnabled"] as? Bool ?? false
+            let calendarEnabled = data["calendarEnabled"] as? Bool ?? false
 
             globalNotifChoice = Double(savedChoice)
             globalReminders = remindersEnabled
+            globalCal = calendarEnabled
 
             self.applicationReminderSwitch.isOn = remindersEnabled
+            self.calendarSwitch.isOn = calendarEnabled
             self.dayButton.isEnabled = remindersEnabled
             self.dayButton.alpha = remindersEnabled ? 1.0 : 0.4
 

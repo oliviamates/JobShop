@@ -404,6 +404,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="applicationReminderSwitch" destination="BHy-la-EcR" id="htq-an-Eon"/>
+                        <outlet property="calendarSwitch" destination="niC-49-BqC" id="06o-5J-PcP"/>
                         <outlet property="dayButton" destination="55L-yg-e6M" id="kLI-qO-7sF"/>
                         <outlet property="dayMenu" destination="PIz-fL-YQM" id="nBX-JC-XUS"/>
                         <outlet property="emailLabel" destination="BCE-xy-sYJ" id="6K3-p1-ySd"/>

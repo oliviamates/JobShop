@@ -57,6 +57,7 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+        loadCalendarPreference()
         refreshDeck()
     }
 
@@ -98,6 +99,24 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
             }
             self.refreshDeck()
         }
+    }
+    
+    private func loadCalendarPreference() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+
+        Firestore.firestore()
+            .collection("accounts")
+            .document(uid)
+            .getDocument { snapshot, error in
+
+                if let error {
+                    print("\(error.localizedDescription)")
+                    return
+                }
+
+                let data = snapshot?.data() ?? [:]
+                globalCal = data["calendarEnabled"] as? Bool ?? false
+            }
     }
 
     private func key(_ card: JobCard) -> String {
@@ -383,7 +402,9 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
             targetCard.setLiked(true)
             store.save(targetCard.card)   // writes to Firestore
             scheduleReminder(for: targetCard.card)
-            presentEventEditor(targetCard.card.company)
+            if (globalCal) {
+                presentEventEditor(targetCard.card.company)
+            }
         }
 
         let exitX = directionRight ? view.frame.width + 150 : -view.frame.width - 150
