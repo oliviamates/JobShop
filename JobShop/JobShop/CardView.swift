@@ -32,7 +32,6 @@ enum Theme {
     }
 }
 
-// MARK: - Model
 
 enum ApplicationStatus: String, CaseIterable {
     case notApplied = "Not Applied"
@@ -67,7 +66,6 @@ struct JobCard {
     var savedAt: Date? = nil
 }
 
-// MARK: - Shared UI helpers
 
 func makeLabel(_ text: String, size: CGFloat, weight: UIFont.Weight = .regular,
                color: UIColor = .black, lines: Int = 0) -> UILabel {

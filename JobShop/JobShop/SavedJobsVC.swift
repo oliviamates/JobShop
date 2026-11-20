@@ -14,8 +14,10 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
     private let tableView = UITableView(frame: .zero, style: .plain)
     private let searchField = UITextField()
     private let emptyLabel = UILabel()
+    private let filterButton = UIButton(type: .system)
     private var visibleJobs: [JobCard] = []
     private var query = ""
+    private var selectedStatus: ApplicationStatus? = nil   // nil = All
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +44,6 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         reload()
     }
 
-    // MARK: Search
-
     private func setupSearchRow(below header: UIView) -> UIView {
         let container = UIView()
         container.backgroundColor = Theme.fieldGray
@@ -66,7 +66,7 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         container.addSubview(glass)
         container.addSubview(searchField)
 
-        let filter = UIButton(type: .system)   // visual only for now
+        let filter = filterButton
         filter.setImage(UIImage(systemName: "line.3.horizontal.decrease",
                                 withConfiguration: UIImage.SymbolConfiguration(pointSize: 12, weight: .medium)), for: .normal)
         filter.tintColor = .gray
@@ -75,6 +75,8 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
         filter.layer.borderWidth = 1
         filter.layer.borderColor = UIColor.lightGray.cgColor
         filter.translatesAutoresizingMaskIntoConstraints = false
+        filter.showsMenuAsPrimaryAction = true
+        filter.menu = makeFilterMenu()
         view.addSubview(filter)
 
         NSLayoutConstraint.activate([
@@ -98,6 +100,31 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
             searchField.centerYAnchor.constraint(equalTo: container.centerYAnchor)
         ])
         return container
+    }
+
+
+    private func makeFilterMenu() -> UIMenu {
+        let all = UIAction(title: "All",
+                           state: selectedStatus == nil ? .on : .off) { [weak self] _ in
+            self?.applyStatusFilter(nil)
+        }
+        let statusActions = ApplicationStatus.allCases.map { status in
+            UIAction(title: status.rawValue,
+                     state: selectedStatus == status ? .on : .off) { [weak self] _ in
+                self?.applyStatusFilter(status)
+            }
+        }
+        return UIMenu(title: "Filter by Status", children: [all] + statusActions)
+    }
+
+    private func applyStatusFilter(_ status: ApplicationStatus?) {
+        selectedStatus = status
+        filterButton.menu = makeFilterMenu()   // refresh checkmarks
+        // Highlight the button when a filter is active
+        let active = status != nil
+        filterButton.tintColor = active ? Theme.green : .gray
+        filterButton.layer.borderColor = (active ? Theme.green : UIColor.lightGray).cgColor
+        reload()
     }
 
     @objc private func searchChanged() {
@@ -148,10 +175,13 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     private func reload() {
         let q = query.trimmingCharacters(in: .whitespaces).lowercased()
-        visibleJobs = q.isEmpty ? store.jobs : store.jobs.filter {
-            $0.company.lowercased().contains(q) ||
-            $0.title.lowercased().contains(q) ||
-            $0.location.lowercased().contains(q)
+        visibleJobs = store.jobs.filter { job in
+            let matchesStatus = selectedStatus == nil || job.status == selectedStatus
+            let matchesQuery = q.isEmpty ||
+                job.company.lowercased().contains(q) ||
+                job.title.lowercased().contains(q) ||
+                job.location.lowercased().contains(q)
+            return matchesStatus && matchesQuery
         }
         tableView.reloadData()
         updateEmptyState()
@@ -159,9 +189,13 @@ class SavedJobsVC: UIViewController, UITableViewDataSource, UITableViewDelegate,
 
     private func updateEmptyState() {
         emptyLabel.isHidden = !visibleJobs.isEmpty
-        emptyLabel.text = q_isEmpty
-            ? "No saved jobs yet.\nSwipe right or tap the heart on a match!"
-            : "No results."
+        if store.jobs.isEmpty {
+            emptyLabel.text = "No saved jobs yet.\nSwipe right or tap the heart on a match!"
+        } else if let status = selectedStatus, q_isEmpty {
+            emptyLabel.text = "No jobs with status \"\(status.rawValue)\"."
+        } else {
+            emptyLabel.text = "No results."
+        }
     }
 
     private var q_isEmpty: Bool { query.trimmingCharacters(in: .whitespaces).isEmpty }

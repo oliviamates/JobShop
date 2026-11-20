@@ -1817,16 +1817,8 @@
                                 <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bZ8-my-40U">
-                                <rect key="frame" x="16" y="228" width="307" height="64"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="delegate" destination="wXw-ny-Bsi" id="0GR-kB-vNn"/>
-                                </connections>
-                            </searchBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J8p-lZ-4Cy">
-                                <rect key="frame" x="331" y="243" width="50" height="35"/>
+                                <rect key="frame" x="339" y="176" width="50" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="line.3.horizontal.decrease.circle" catalog="system" title=""/>
@@ -1841,7 +1833,6 @@
                     <connections>
                         <outlet property="filterButton" destination="J8p-lZ-4Cy" id="Avx-Lb-0Tk"/>
                         <outlet property="menuButton" destination="7kI-Gu-HVT" id="amx-er-M7I"/>
-                        <outlet property="searchBar" destination="bZ8-my-40U" id="ApS-YD-rT4"/>
                         <outlet property="titleLabel" destination="2z4-N7-zp5" id="iPQ-LS-W6v"/>
                     </connections>
                 </viewController>
