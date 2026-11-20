@@ -19,6 +19,12 @@ class UpdatePasswordVC: UIViewController {
         self.oldPasswordField.text = ""
         self.newPasswordField.text = ""
         self.errorMessage.text = ""
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @IBAction func dismissKeyboard() {
+        view.endEditing(true)
     }
     
 

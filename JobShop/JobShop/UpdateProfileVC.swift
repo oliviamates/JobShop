@@ -26,8 +26,15 @@ class UpdateProfileVC: UIViewController {
         birthdayField.maximumDate = Date()
         emailField.text = Auth.auth().currentUser?.email
         loadProfile()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        view.addGestureRecognizer(tapGesture)
         // Do any additional setup after loading the view.
     }
+    
+    @IBAction func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
     
     func loadProfile() {
         guard let user = Auth.auth().currentUser else { return }

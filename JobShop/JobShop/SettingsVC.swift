@@ -52,8 +52,12 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
         let optionThree = UIAction(title: "7 days after saving", handler: { action in
             self.selectDay(action.title)
         })
+        
+        let optionFour = UIAction(title: "30 seconds after saving", handler: { action in
+            self.selectDay(action.title)
+        })
 
-        let dayMenu = UIMenu(children: [optionOne, optionTwo, optionThree])
+        let dayMenu = UIMenu(children: [optionFour, optionOne, optionTwo, optionThree])
         
         dayButton.menu = dayMenu
         dayButton.showsMenuAsPrimaryAction = true
@@ -171,7 +175,11 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
                 self.dayButton.setTitle("3 days after saving", for: .normal)
             } else if savedChoice == 604800 {
                 self.dayButton.setTitle("7 days after saving", for: .normal)
-            } else {
+            }
+            else if savedChoice == 30 {
+                    self.dayButton.setTitle("30 seconds after saving", for: .normal)
+            }
+            else {
                 self.dayButton.setTitle("1 day after saving", for: .normal)
             }
         }
@@ -276,7 +284,10 @@ class SettingsVC: UITableViewController, UIApplicationDelegate, UNUserNotificati
             globalNotifChoice = 1 * 86400
         } else if title == "3 days after saving" {
             globalNotifChoice = 3 * 86400
-        } else {
+        }else if title == "30 seconds after saving" {
+            globalNotifChoice = 30
+        }
+        else {
             globalNotifChoice = 7 * 86400
         }
 
