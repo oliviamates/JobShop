@@ -320,7 +320,7 @@
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="filled" title="Update Resume">
                                                         <fontDescription key="titleFontDescription" type="system" pointSize="11"/>
-                                                        <color key="baseBackgroundColor" name="DarkGreen"/>
+                                                        <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     </buttonConfiguration>
                                                     <connections>
                                                         <segue destination="SKB-Gg-tEF" kind="presentation" modalPresentationStyle="fullScreen" id="mWL-Ke-8ve"/>
@@ -415,7 +415,7 @@
                                 <rect key="frame" x="43" y="109" width="250" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="QJP-fd-2cH">
@@ -448,7 +448,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -591,12 +591,12 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ms7-P8-Xik">
                                 <rect key="frame" x="227.33333333333334" y="751" width="76.666666666666657" height="35"/>
-                                <color key="backgroundColor" red="0.58166566369999995" green="0.78125" blue="0.56196113469999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" red="0.66740771229999996" green="1" blue="0.84080517809999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.7065429688" green="0.986328125" blue="0.8134765625" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -654,7 +654,7 @@
                                 <rect key="frame" x="43" y="109" width="193" height="31"/>
                                 <color key="tintColor" name="DarkGreen"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7dY-h6-9YA">
@@ -797,7 +797,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -818,7 +818,7 @@
                                 <rect key="frame" x="43.000000000000014" y="109" width="230.33333333333337" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" name="DarkGreen"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ce6-fw-XdK" userLabel="error message">
@@ -902,7 +902,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" image="doc.fill" catalog="system" imagePlacement="leading" title="Upload File" imagePadding="10">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -925,7 +925,7 @@
                                 <color key="tintColor" red="0.71602855330000004" green="0.90354937310000005" blue="0.62888340220000005" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <buttonConfiguration key="configuration" style="filled" image="camera.fill" catalog="system" title="Scan Copy" imagePadding="10">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -946,7 +946,7 @@
                                 <rect key="frame" x="42.999999999999986" y="109" width="207.66666666666663" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" name="DarkGreen"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kS0-6L-sfB" userLabel="error message">
@@ -1022,7 +1022,7 @@
                                 <rect key="frame" x="43" y="109" width="310.33333333333331" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We found these skills in your resume that aren't already in your profile. Select the ones you'd like to add!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-1C-sBx">
@@ -1155,35 +1155,8 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="liquidbackground" translatesAutoresizingMaskIntoConstraints="NO" id="XpW-SK-Qcq">
                                 <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-RA-3kS">
-                                <rect key="frame" x="16" y="581" width="361" height="49"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <color key="tintColor" red="0.20886090200040644" green="0.33353515624999996" blue="0.11086826644142234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="SIGN UP">
-                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
-                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
-                                </buttonConfiguration>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
-                                        <real key="value" value="0.29999999999999999"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
-                                        <integer key="value" value="4"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
-                                        <size key="value" width="0.0" height="3"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="niV-su-XEb" kind="show" id="KUj-gK-IDK"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gBg-bh-asZ">
-                                <rect key="frame" x="16" y="509" width="361" height="49"/>
+                                <rect key="frame" x="16" y="494" width="361" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
@@ -1217,10 +1190,37 @@
                                     <segue destination="2og-pZ-y75" kind="show" id="5gz-VA-XUG"/>
                                 </connections>
                             </button>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="fc7479ee-7727-4ddd-af94-081685f1c2c5" translatesAutoresizingMaskIntoConstraints="NO" id="ggv-gz-ARJ">
-                                <rect key="frame" x="-159" y="118" width="727" height="440"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="f5d89959-2410-4d3e-9d95-0456fb0178be" translatesAutoresizingMaskIntoConstraints="NO" id="ggv-gz-ARJ">
+                                <rect key="frame" x="-167" y="103" width="727" height="440"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oLi-RA-3kS">
+                                <rect key="frame" x="16" y="565" width="361" height="49"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" red="0.20886090200040644" green="0.33353515624999996" blue="0.11086826644142234" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="SIGN UP">
+                                    <fontDescription key="titleFontDescription" style="UICTFontTextStyleTitle3"/>
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
+                                        <real key="value" value="0.29999999999999999"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowRadius">
+                                        <integer key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="size" keyPath="layer.shadowOffset">
+                                        <size key="value" width="0.0" height="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="NO"/>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="niV-su-XEb" kind="show" id="KUj-gK-IDK"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1247,7 +1247,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="liquidbackground" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fa1-4E-ptD">
-                                <rect key="frame" x="-16" y="0.0" width="433" height="224"/>
+                                <rect key="frame" x="-16" y="0.0" width="433" height="190"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Log In" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ebc-0E-62J">
@@ -1255,7 +1255,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="53"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Welcome back to JobShop!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V9A-eL-YH8">
@@ -1285,7 +1285,7 @@
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Sign In">
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -1343,13 +1343,12 @@
                                 <color key="textColor" systemColor="systemRedColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11e-2L-T9y">
-                                <rect key="frame" x="0.0" y="133" width="393" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="11e-2L-T9y">
+                                <rect key="frame" x="0.0" y="155" width="393" height="98"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
+                                        <integer key="value" value="60"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -1358,6 +1357,10 @@
                         <viewLayoutGuide key="safeArea" id="N1b-1h-Yhr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="11e-2L-T9y" firstAttribute="trailing" secondItem="N1b-1h-Yhr" secondAttribute="trailing" id="L2s-Fa-Z4s"/>
+                            <constraint firstItem="11e-2L-T9y" firstAttribute="leading" secondItem="N1b-1h-Yhr" secondAttribute="leading" id="wV1-Bk-lJ6"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="LUc-LQ-Fqz" appends="YES" id="fuj-ed-fd7"/>
                         </connections>
@@ -1387,13 +1390,12 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="liquidbackground" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hgC-8m-EsV">
                                 <rect key="frame" x="0.0" y="0.0" width="426" height="216"/>
                             </imageView>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wJG-7g-PnK">
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wJG-7g-PnK">
                                 <rect key="frame" x="0.0" y="132" width="393" height="109"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="40"/>
+                                        <integer key="value" value="60"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
@@ -1437,7 +1439,7 @@
                                 <rect key="frame" x="43" y="230" width="313" height="39"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="33"/>
-                                <color key="textColor" name="DarkGreen"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NoV-2z-erI">
@@ -1445,7 +1447,7 @@
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next">
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -1530,12 +1532,15 @@
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="B9P-lQ-GgT" secondAttribute="leading" id="Bif-rA-Si4"/>
                             <constraint firstItem="kI9-nf-y7v" firstAttribute="top" secondItem="8rj-qG-Wks" secondAttribute="bottom" constant="16" id="ENa-6C-ssF"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="10h-Xh-6Pz" secondAttribute="leading" id="GhG-er-qT1"/>
+                            <constraint firstItem="wJG-7g-PnK" firstAttribute="trailing" secondItem="Fba-X2-qtL" secondAttribute="trailing" id="Glb-A6-T6L"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="0fx-A9-Yfb" secondAttribute="leading" id="GrJ-lC-U3V"/>
+                            <constraint firstAttribute="trailing" secondItem="wJG-7g-PnK" secondAttribute="trailing" id="IDM-fc-27S"/>
                             <constraint firstItem="KDW-wa-lmu" firstAttribute="leading" secondItem="Fba-X2-qtL" secondAttribute="leading" constant="40" id="Ic8-H2-7PC"/>
                             <constraint firstItem="ddG-Lz-9Sa" firstAttribute="top" secondItem="iE1-0E-GqE" secondAttribute="bottom" constant="5" id="OR1-su-mNP"/>
                             <constraint firstItem="Fba-X2-qtL" firstAttribute="trailing" secondItem="KDW-wa-lmu" secondAttribute="trailing" constant="53" id="P3S-p5-zDL"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="2JN-yU-Efd" secondAttribute="leading" id="Ugq-2g-1qO"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="Fba-X2-qtL" secondAttribute="leading" constant="43" id="VHA-ND-mM4"/>
+                            <constraint firstItem="wJG-7g-PnK" firstAttribute="leading" secondItem="Fba-X2-qtL" secondAttribute="leading" id="WVa-6l-sOe"/>
                             <constraint firstItem="0fx-A9-Yfb" firstAttribute="top" secondItem="hgC-8m-EsV" secondAttribute="bottom" constant="14" id="c26-Gx-6Wr"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="top" secondItem="2JN-yU-Efd" secondAttribute="bottom" constant="5" id="cm5-WX-KDn"/>
                             <constraint firstItem="10h-Xh-6Pz" firstAttribute="top" secondItem="kI9-nf-y7v" secondAttribute="bottom" constant="5" id="hr9-va-Y2K"/>
@@ -1543,6 +1548,7 @@
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="centerX" secondItem="NoV-2z-erI" secondAttribute="centerX" id="jQY-hX-UiM"/>
                             <constraint firstItem="Ev2-cq-owZ" firstAttribute="top" secondItem="0fx-A9-Yfb" secondAttribute="bottom" constant="51" id="kQA-gJ-he4"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="top" secondItem="54a-TT-1xZ" secondAttribute="top" constant="420" id="lUG-8K-k56"/>
+                            <constraint firstItem="wJG-7g-PnK" firstAttribute="leading" secondItem="54a-TT-1xZ" secondAttribute="leading" id="p1t-ns-IiP"/>
                             <constraint firstItem="B9P-lQ-GgT" firstAttribute="top" secondItem="10h-Xh-6Pz" secondAttribute="bottom" constant="8" id="quj-rU-kJs"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="iE1-0E-GqE" secondAttribute="leading" id="si1-sC-C9B"/>
                             <constraint firstItem="8rj-qG-Wks" firstAttribute="leading" secondItem="Ev2-cq-owZ" secondAttribute="leading" id="tmE-SQ-0ub"/>
@@ -1593,7 +1599,7 @@
                                 <rect key="frame" x="51" y="152" width="270" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" name="DarkGreen"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eUD-Ps-ThN">
@@ -1601,7 +1607,7 @@
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Next">
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -1736,7 +1742,7 @@
                                 <rect key="frame" x="51" y="152" width="178" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" name="DarkGreen"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0b-C8-25a">
@@ -1744,7 +1750,7 @@
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Upload Resume">
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="SKB-Gg-tEF" kind="presentation" modalPresentationStyle="fullScreen" id="vVi-KU-8oz"/>
@@ -1755,7 +1761,7 @@
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Done!">
-                                    <color key="baseBackgroundColor" name="DarkGreen"/>
+                                    <color key="baseBackgroundColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.shadowOpacity">
@@ -1808,7 +1814,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="37"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" fixedFrame="YES" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="bZ8-my-40U">
@@ -1827,7 +1833,7 @@
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="dhT-12-qdB"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                     <navigationItem key="navigationItem" id="XpF-aQ-Zzn">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="line.3.horizontal" catalog="system" style="plain" id="7kI-Gu-HVT"/>
@@ -1874,7 +1880,7 @@
                                 <rect key="frame" x="43" y="109" width="130.33333333333334" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="LCm-OS-hQP">
@@ -1911,7 +1917,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -2008,7 +2014,7 @@
                                 <rect key="frame" x="43" y="109" width="117" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="vmf-Dw-KBd">
@@ -2056,7 +2062,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -2147,7 +2153,7 @@
                                 <rect key="frame" x="53" y="109" width="132" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="NEL-J9-Dc9">
@@ -2187,7 +2193,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -2303,7 +2309,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="37"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -2357,7 +2363,7 @@
                                 <rect key="frame" x="43" y="109" width="227" height="31"/>
                                 <color key="tintColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="GillSans-Bold" family="Gill Sans" pointSize="26"/>
-                                <color key="textColor" red="0.20886090199999999" green="0.33353515620000002" blue="0.1108682664" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="0.2551269531" green="0.3876953125" blue="0.3049316406" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OWE-c8-BRs">
@@ -2390,7 +2396,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" systemColor="labelColor"/>
-                                    <color key="baseBackgroundColor" name="LightGreen"/>
+                                    <color key="baseBackgroundColor" red="0.7192382812" green="0.9829101562" blue="0.8168945312" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
@@ -2511,7 +2517,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="675-ZG-PIs"/>
-        <segue reference="0r8-ty-0cb"/>
+        <segue reference="ZFB-Ui-pQx"/>
         <segue reference="oDD-r6-I76"/>
         <segue reference="plu-8o-mAE"/>
         <segue reference="8AQ-uY-PXb"/>
@@ -2522,7 +2528,7 @@
         <image name="camera.fill" catalog="system" width="128" height="93"/>
         <image name="chevron.right" catalog="system" width="97" height="128"/>
         <image name="doc.fill" catalog="system" width="115" height="128"/>
-        <image name="fc7479ee-7727-4ddd-af94-081685f1c2c5" width="500" height="500"/>
+        <image name="f5d89959-2410-4d3e-9d95-0456fb0178be" width="500" height="500"/>
         <image name="line.3.horizontal" catalog="system" width="128" height="65"/>
         <image name="line.3.horizontal.decrease.circle" catalog="system" width="128" height="123"/>
         <image name="liquidbackground" width="417" height="740"/>

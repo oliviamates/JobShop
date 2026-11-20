@@ -33,11 +33,12 @@ class MatchesVC: UIViewController, EKEventEditViewDelegate {
     @IBOutlet weak var titleLabel: UILabel?
     
     @IBOutlet weak var searchBar: UISearchBar!
-    
-    override func viewDidLoad() {
+
+        override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = Theme.background
+        view.backgroundColor = .green
+
         if let menuButton {
                 menuButton.menu = makeNavMenu()              // storyboard button
         } else {
